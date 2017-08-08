@@ -1,0 +1,16 @@
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\SoftType_S_ZD.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\SoftType_S_ZD.pdb
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\Clou_Report.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\DataCore.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\OperateData.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\NPOI.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\Clou_Report.pdb
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\DataCore.pdb
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\bin\Debug\OperateData.pdb
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.csprojResolveAssemblyReference.cache
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.dll
+D:\AziouStudio\MyInterface\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.pdb

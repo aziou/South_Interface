@@ -110,3 +110,10 @@ D:\lees\South_Interface（20170611-20.33）\South_Interface\Mis_Interface_Driver
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.csprojResolveAssemblyReference.cache
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.dll
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\bin\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\bin\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\bin\Debug\Driver_Interface.dll
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\bin\Debug\Driver_Interface.pdb
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.csprojResolveAssemblyReference.cache
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.pdb

@@ -65,3 +65,7 @@ D:\lees\South_Interface（20170611-20.33）\South_Interface\Driver_Interface\bin
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Driver_Interface\bin\Debug\Driver_Interface.pdb
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.dll
 D:\lees\South_Interface（20170611-20.33）\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.pdb
+D:\AziouStudio\South_Interface\Driver_Interface\bin\Debug\Driver_Interface.dll
+D:\AziouStudio\South_Interface\Driver_Interface\bin\Debug\Driver_Interface.pdb
+D:\AziouStudio\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.dll
+D:\AziouStudio\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.pdb

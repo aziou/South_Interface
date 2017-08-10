@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TheNewInterface.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="(南网版本)上传接口-2017-08-7（Ver:2.1.6）" 
+        Title="(南网版本)上传接口-2017-08-10（Ver:2.1.8）" 
         MinHeight="850" MaxHeight="850"
         MinWidth="1350" MaxWidth="1350" WindowStartupLocation="CenterScreen" Icon="/TheNewInterface;component/clou.ico">
     <Window.Resources>
@@ -88,7 +88,7 @@
                             <Button Name="btn_deldteMis" Width="80" Height="30" Content="删除中间库" Click="btn_deldteMis_Click" Margin="0,0,5,0"  />
                             <Button Name="btn_deldteMisAll" Width="80" Height="30" Content="删除工作单" Click="btn_deldteMisAll_Click" Margin="0,0,5,0"  />
                             <Button Name="btn_testFunction" Width="80" Height="30" Content="导出物资" Click="btn_testFunction_Click"  Margin="0,0,5,0"  />
-                            <Button Name="btn_Puthege" Width="80" Height="30" Content="导出合格证" Click="btn_Puthege_Click"  Margin="0,0,5,0" />
+                            <Button Name="btn_Puthege" Width="80" Height="30" Content="重复性报告" Click="btn_Puthege_Click"  Margin="0,0,5,0" />
                         </WrapPanel>
                     </StackPanel>
                         <!--<StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0,35,8,35"></StackPanel>-->
@@ -867,7 +867,7 @@
                         <Button Name="btn_local_Test" Width="80" Height="25" VerticalContentAlignment="Center" Click="btn_local_Test_Click" Visibility="Hidden" />
                         <Button Name="btn_local_Edit" Width="80" Height="25" VerticalContentAlignment="Center" Content="可编辑" Click="btn_local_Edit_Click"/>
                     </WrapPanel>
-                     <DataGrid Grid.Row="1" CellEditEnding="DataGrid_BaseInfo_CellEditEnding"   AutoGenerateColumns="True" CanUserAddRows="True" Name="DataGrid_BaseInfo" ItemsSource="{Binding DataBase}" IsReadOnly="True" SelectedCellsChanged="Grid_showItem_SelectedCellsChanged">
+                    <DataGrid Grid.Row="1" CellEditEnding="DataGrid_BaseInfo_CellEditEnding"   AutoGenerateColumns="True" CanUserAddRows="True" Name="DataGrid_BaseInfo" ItemsSource="{Binding DataBase}" IsReadOnly="True" SelectedCellsChanged="DataGrid_BaseInfo_SelectedCellsChanged">
                         
                     </DataGrid>
                     <TabControl Grid.Row="2">

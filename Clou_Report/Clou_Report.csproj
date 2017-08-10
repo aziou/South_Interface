@@ -58,6 +58,7 @@
     <Compile Include="Model\MemberForZJ.cs" />
     <Compile Include="Report_Excel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report_ST\Print_repetition.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataCore\DataCore.csproj">

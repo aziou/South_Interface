@@ -229,6 +229,7 @@ namespace TheNewInterface
         private void btn_AddDQBM_Click(object sender, RoutedEventArgs e)
         {
             AddUser adduser = new AddUser("AddArea");
+            adduser.Title = "添加地区";
             adduser.ShowDialog();
         }
 

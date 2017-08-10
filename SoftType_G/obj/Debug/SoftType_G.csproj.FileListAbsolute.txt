@@ -186,3 +186,15 @@ D:\lees\South_Interface（20170611-20.33）\South_Interface\SoftType_G\bin\Debug
 D:\lees\South_Interface（20170611-20.33）\South_Interface\SoftType_G\obj\Debug\SoftType_G.csprojResolveAssemblyReference.cache
 D:\lees\South_Interface（20170611-20.33）\South_Interface\SoftType_G\obj\Debug\SoftType_G.dll
 D:\lees\South_Interface（20170611-20.33）\South_Interface\SoftType_G\obj\Debug\SoftType_G.pdb
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\SoftType_G.dll
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\SoftType_G.pdb
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\DataCore.dll
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\OperateData.dll
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\DataCore.pdb
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\OperateData.pdb
+D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.csprojResolveAssemblyReference.cache
+D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.dll
+D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.pdb

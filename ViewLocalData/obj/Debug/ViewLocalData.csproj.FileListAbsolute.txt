@@ -67,3 +67,13 @@ D:\lees\South_Interface（20170611-20.33）\South_Interface\ViewLocalData\bin\De
 D:\lees\South_Interface（20170611-20.33）\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.csprojResolveAssemblyReference.cache
 D:\lees\South_Interface（20170611-20.33）\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.dll
 D:\lees\South_Interface（20170611-20.33）\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.pdb
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\ViewLocalData.dll
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\ViewLocalData.pdb
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\DataCore.dll
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\OperateData.dll
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\DataCore.pdb
+D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\OperateData.pdb
+D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.csprojResolveAssemblyReference.cache
+D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.dll
+D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.pdb

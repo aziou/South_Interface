@@ -119,3 +119,11 @@ D:\lees\South_Interface（20170611-20.33）\South_Interface\OperateData\bin\Debu
 D:\lees\South_Interface（20170611-20.33）\South_Interface\OperateData\obj\Debug\OperateData.csprojResolveAssemblyReference.cache
 D:\lees\South_Interface（20170611-20.33）\South_Interface\OperateData\obj\Debug\OperateData.dll
 D:\lees\South_Interface（20170611-20.33）\South_Interface\OperateData\obj\Debug\OperateData.pdb
+D:\AziouStudio\South_Interface\OperateData\bin\Debug\OperateData.dll
+D:\AziouStudio\South_Interface\OperateData\bin\Debug\OperateData.pdb
+D:\AziouStudio\South_Interface\OperateData\bin\Debug\DataCore.dll
+D:\AziouStudio\South_Interface\OperateData\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\AziouStudio\South_Interface\OperateData\bin\Debug\DataCore.pdb
+D:\AziouStudio\South_Interface\OperateData\obj\Debug\OperateData.csprojResolveAssemblyReference.cache
+D:\AziouStudio\South_Interface\OperateData\obj\Debug\OperateData.dll
+D:\AziouStudio\South_Interface\OperateData\obj\Debug\OperateData.pdb

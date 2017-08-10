@@ -60,6 +60,10 @@ namespace DataCore.Global
 
         public static double Meter_Constant = 0;
 
+        public static string SaveReportPath =ReadElement("NewUser/CloumMIS/Item", "Name", "txt_Report", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
+
+        public static string SaveExcel = "";
+
         #endregion
 
         #region 报表变量

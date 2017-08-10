@@ -2918,62 +2918,117 @@ namespace TheNewInterface
 
         private void btn_Puthege_Click(object sender, RoutedEventArgs e)
         {
-            //string str = "52B293C9S1A1543609752B293C9S1A1543609752B293C9S1A15436097";
-            //List<string> resta = new List<string>();
-            //resta=TransStr(str);
-            //foreach (string remp in resta)
-            //{
-            //    listBox_UpInfo.Items.Add(remp);
-            //}
-            #region Print
-            #region Determine if there is any data
-            if (ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count == null || ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count < 0)
+            try
             {
-                MessageBox.Show("没有检定数据！");
-                return;
-            }
-            #endregion
+                //string str = "52B293C9S1A1543609752B293C9S1A1543609752B293C9S1A15436097";
+                //List<string> resta = new List<string>();
+                //resta=TransStr(str);
+                //foreach (string remp in resta)
+                //{
+                //    listBox_UpInfo.Items.Add(remp);
+                //}
+                #region Print 合格证
+                //#region Determine if there is any data
+                //if (ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count == null || ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count < 0)
+                //{
+                //    MessageBox.Show("没有检定数据！");
+                //    return;
+                //}
+                //#endregion
 
-            DataCore.Global.GB_Base.ExcelReportName = "HGZ_Sx.xls";
-            int fileIndex = 1, cycleIndex = 0;
-            Clou_Report.Report_Excel Print = new Clou_Report.Report_Excel();
-            #region Get information on certificate
-            List<string> lisZcbh = new List<string>();
-            List<string> lisJjrq = new List<string>();
+                //DataCore.Global.GB_Base.ExcelReportName = "HGZ_Sx.xls";
+                //int fileIndex = 1, cycleIndex = 0;
+                //Clou_Report.Report_Excel Print = new Clou_Report.Report_Excel();
+                //#region Get information on certificate
+                //List<string> lisZcbh = new List<string>();
+                //List<string> lisJjrq = new List<string>();
 
-            foreach (MeterBaseInfoFactor temp in ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo)
-            {
-                DataCore.Global.GB_Base.MeterCheckTime = temp.DTM_TEST_DATE.Trim();
-                DataCore.Global.GB_Base.MeterCheckName = temp.AVR_TEST_PERSON.Trim();
-                if (temp.BolIfup == true)
+                //foreach (MeterBaseInfoFactor temp in ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo)
+                //{
+                //    DataCore.Global.GB_Base.MeterCheckTime = temp.DTM_TEST_DATE.Trim();
+                //    DataCore.Global.GB_Base.MeterCheckName = temp.AVR_TEST_PERSON.Trim();
+                //    if (temp.BolIfup == true)
+                //    {
+                //        lisZcbh.Add(temp.AVR_ASSET_NO.Trim());
+                //        lisJjrq.Add(temp.DTM_VALID_DATE.Trim());
+                //    }
+                //    cycleIndex = cycleIndex + 1;
+                //    if (cycleIndex >= 24)
+                //    {
+                //        Print.PrintExcelCertificate(lisZcbh, lisJjrq, fileIndex.ToString());
+                //        fileIndex++;
+                //        lisZcbh.Clear();
+                //        lisJjrq.Clear();
+                //    }
+                //}
+                //if (lisZcbh.Count < 24)
+                //{
+                //    Print.PrintExcelCertificate(lisZcbh, lisJjrq, fileIndex.ToString());
+                //}
+                //if (DataCore.Global.GB_Base.ExcelResult == "success")
+                //{
+                //    MessageBox.Show("导出合格证成功");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("导出合格证失败");
+                //}
+                //#endregion
+                #endregion
+                List<string> selectId = new List<string>();
+                selectId = GetSelectMeter();
+
+                #region 导出重复性试验
+                //获取数据
+                ObservableCollection<DataCore.ReportModel.ST_Repetition> ST_errorCol = new ObservableCollection<DataCore.ReportModel.ST_Repetition>();
+                DataCore.ReportModel.ST_Repetition error_ST = new DataCore.ReportModel.ST_Repetition();
+                switch (DataCore.Global.GB_Base.SoftType)
                 {
-                    lisZcbh.Add(temp.AVR_ASSET_NO.Trim());
-                    lisJjrq.Add(temp.DTM_VALID_DATE.Trim());
-                }
-                cycleIndex = cycleIndex + 1;
-                if (cycleIndex >= 24)
-                {
-                    Print.PrintExcelCertificate(lisZcbh, lisJjrq, fileIndex.ToString());
-                    fileIndex++;
-                    lisZcbh.Clear();
-                    lisJjrq.Clear();
-                }
-            }
-            if (lisZcbh.Count < 24)
-            {
-                Print.PrintExcelCertificate(lisZcbh, lisJjrq, fileIndex.ToString());
-            }
-            if (DataCore.Global.GB_Base.ExcelResult == "success")
-            {
-                MessageBox.Show("导出合格证成功");
-            }
-            else
-            {
-                MessageBox.Show("导出合格证失败");
-            }
-            #endregion
-            #endregion
+                    case "CL3000G":
+                    case "CL3000F":
+                    case "CL3000DV80":
 
+                        break;
+                    case "CL3000S":
+                        foreach (string temp in selectId)
+                        {
+                            error_ST = Clou_Report.Report_ST.Print_repetition.GetCL3000SData(temp);
+                            ST_errorCol.Add(error_ST);
+                        }
+                        break;
+
+                }
+                #endregion
+                bool result = Clou_Report.Report_ST.Print_repetition.Print(ST_errorCol);
+                if (result)
+                {
+                    MessageBox.Show("导出成功！");
+                    System.Diagnostics.Process.Start(DataCore.Global.GB_Base.SaveExcel);
+                }
+                else
+                {
+                    MessageBox.Show("导出失败！");
+                }
+            }
+            catch
+            { 
+            
+            }
+        }
+
+        private List<string> GetSelectMeter()
+        {
+            List<string> lisMeterID = new List<string>();
+            int MeterCount = ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count;
+            int intSelectNum = 0;
+            for (int i = 0; i < MeterCount; i++)
+            {
+                if (ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[i].BolIfup == true)
+                {
+                    lisMeterID.Add(ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[i].PK_LNG_METER_ID);
+                }
+            }
+            return lisMeterID;
         }
 
         private void btn_TransTmp_Click(object sender, RoutedEventArgs e)

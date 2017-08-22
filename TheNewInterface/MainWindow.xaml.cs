@@ -174,6 +174,10 @@ namespace TheNewInterface
                 int tempiny = ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count;
                 foreach (MeterBaseInfoFactor temp in ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo)
                 {
+                    if (temp.AVR_TOTAL_CONCLUSION.Trim() != "合格" && DataCore.Global.GB_Base.IsUpDisOK == true)
+                    {
+                        continue;
+                    }
                     if (temp.BolIfup == true)
                     {
                         t = i + 1;

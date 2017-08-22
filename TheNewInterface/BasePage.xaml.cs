@@ -75,6 +75,8 @@ namespace TheNewInterface
             cmb_Seal01.Text = OperateData.FunctionXml.ReadElement(strSection, "Name", "cmb_Seal01", "Value", "", BaseConfigPath);
             txt_Report.Text = OperateData.FunctionXml.ReadElement(strSection, "Name", "txt_Report", "Value", "", BaseConfigPath);
             Cmb_Facory.Text = OperateData.FunctionXml.ReadElement(strSection, "Name", "Cmb_Facory", "Value", "", BaseConfigPath);
+            rbtn_disOkTrue.IsChecked =Convert.ToBoolean(OperateData.FunctionXml.ReadElement(strSection, "Name", "rbtn_disOkTrue", "Value", "true", BaseConfigPath));
+            rbtn_disOkFalse.IsChecked = Convert.ToBoolean(OperateData.FunctionXml.ReadElement(strSection, "Name", "rbtn_disOkFalse", "Value", "", BaseConfigPath));
           
         }
 
@@ -136,6 +138,7 @@ namespace TheNewInterface
             string control_content;
             List<TextBox> txtList = FindVisualChild<TextBox>(DataConfig);
             List<ComboBox> ComboxList = FindVisualChild<ComboBox>(DataConfig);
+            List<RadioButton> RbuttonList = FindVisualChild<RadioButton>(DataConfig);
             string strSection = "NewUser/CloumMIS/Item";
             foreach (TextBox v in txtList)
             {
@@ -147,9 +150,18 @@ namespace TheNewInterface
 
 
             }
-            foreach (ComboBox v in ComboxList)
+            foreach (RadioButton v in RbuttonList)
             {
 
+                control_content = ((RadioButton)v).IsChecked.ToString();
+                control_name = ((RadioButton)v).Name;
+
+                OperateData.FunctionXml.UpdateElement(strSection, "Name", control_name, "Value", control_content, BaseConfigPath);
+
+
+            }
+            foreach (ComboBox v in ComboxList)
+            {
                 control_content = ((ComboBox)v).Text;
                 control_name = ((ComboBox)v).Name;
 
@@ -258,6 +270,27 @@ namespace TheNewInterface
             //{
 
             txt_Report.Text = dialog.SelectedPath;  //   
+
+        }
+
+        private void rbtn_disOkTrue_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton Rbutton = sender as RadioButton;
+            switch (Rbutton.Name)
+            {
+                case "rbtn_disOkTrue":
+                    rbtn_disOkTrue.IsChecked = true;
+                    break;
+                case "rbtn_disOkFalse":
+                    rbtn_disOkFalse.IsChecked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void rbtn_disOkTrue_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
   

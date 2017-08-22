@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TheNewInterface.BasePage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="基本信息配置" Height="350" Width="550"
+        Title="基本信息配置" Height="425" Width="550"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="DataConfig">
@@ -49,6 +49,11 @@
                 <ComboBox Name="cmb_Seal02" Width="80" Height="25" VerticalContentAlignment="Center" />
                 <Label Content="铅封三位置：" Width="80" Height="25" VerticalContentAlignment="Center"/>
                 <ComboBox Name="cmb_Seal03" Width="80" Height="25" VerticalContentAlignment="Center" />
+            </WrapPanel>
+            <WrapPanel Margin="0,10,0,0">
+                <Label Content="是否上传不合格表"></Label>
+                <RadioButton Content="是" IsChecked="True" GroupName="IfUpDisOK" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="rbtn_disOkTrue" Click="rbtn_disOkTrue_Click" Loaded="rbtn_disOkTrue_Loaded"></RadioButton>
+                <RadioButton Content="否" GroupName="IfUpDisOK" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Name="rbtn_disOkFalse" Click="rbtn_disOkTrue_Click"></RadioButton>
             </WrapPanel>
             <Button Content="保存" Name="btn_Save" Width="80" Height="25" Click="btn_Save_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,15,0,0"/>
         </StackPanel>

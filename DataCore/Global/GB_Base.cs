@@ -63,6 +63,10 @@ namespace DataCore.Global
         public static string SaveReportPath =ReadElement("NewUser/CloumMIS/Item", "Name", "txt_Report", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
 
         public static string SaveExcel = "";
+         /// <summary>
+         /// True 不上传不合格  False 上传不合格数据
+         /// </summary>
+        public static bool IsUpDisOK = Convert.ToBoolean(ReadElement("NewUser/CloumMIS/Item", "Name", "rbtn_disOkFalse", "Value", "False", BaseConfigPath));
 
         #endregion
 

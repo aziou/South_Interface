@@ -1540,16 +1540,14 @@ namespace SoftType_G
                 List<string> listSQL = new List<string>();
                 string strValue = "";
                 string strTypeCode = "";
-                string strSQL = "select * from METER_ENERGY_TEST_DATA  where  FK_LNG_METER_ID='" + PK_IDL + "'";
+                string strSQL = "select * from MeterZzData  where  intMyId='" + PK_IDL + "'";
                 string strOracleSQL_Name = "";
                 string strOracleSQL_Value = "";
                 string strOracleSQL = "insert into VT_SB_JKDNBZZJL (";
-                OleDbConnection AccessConntion = new OleDbConnection(DataCore.Global.GB_Base.AccessLink);
+               
                 try
                 {
-                    AccessConntion.Open();
-                    OleDbCommand ccmd = new OleDbCommand(strSQL, AccessConntion);
-                    OleDbDataReader red = ccmd.ExecuteReader();
+                   
                     #region 防止重复数据
                     List<string> ProjectCol = new List<string>();
                     #endregion

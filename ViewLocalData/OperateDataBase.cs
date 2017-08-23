@@ -116,6 +116,7 @@ namespace ViewLocalData
 
                 foreach (DataRow row in TableName.Rows)
                 {
+                   
                     TableList.Add(row["TABLE_NAME"].ToString());
                 }
             }
@@ -321,7 +322,49 @@ namespace ViewLocalData
                     }
                     foreach (string temp in Tmp)
                     {
+                        if (temp == "METER_INFO")
+                        {
+                            continue;
+                        }
                         string sql = "delete from " + "TMP_"+temp + " where 1=1";
+                        OleDbCommand cmd = new OleDbCommand(sql, conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception exError)
+                {
+
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+
+
+            }
+        }
+
+        public static void DeleteTmpBaseInfo(List<string> lis_bnum)
+        {
+            string TmpDataPath = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterDataTmp.mdb";
+            string Sql_word_1 = "Provider=Microsoft.ACE.OleDb.12.0;Data Source=";
+            string Sql_word_2 = ";Persist Security Info=False";
+
+            using (OleDbConnection conn = new OleDbConnection(Sql_word_1 + TmpDataPath + Sql_word_2))
+            {
+                try
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    foreach (string temp in lis_bnum)
+                    {
+
+                        string sql = "delete from " + "TMP_METER_INFO  where LNG_BENCH_POINT_NO="+temp+"";
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                     }

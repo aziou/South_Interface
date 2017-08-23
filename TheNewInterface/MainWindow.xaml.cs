@@ -3091,13 +3091,14 @@ namespace TheNewInterface
             TableName = viewBase.GetDataBaseTable();
 
             ViewLocalData.OperateDataBase.DeleteTmpData(TableName);
-            List<string> MeterIDList=new List<string> ();
+            List<string> MeterIDList = new List<string>();
+            List<string> MeterBnumList = new List<string>();
             for (int i = 0; i<ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView.Count; i++)
             {
                 MeterIDList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][0].ToString());
-                
+                MeterBnumList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][2].ToString());
             }
-
+            ViewLocalData.OperateDataBase.DeleteTmpBaseInfo(MeterBnumList);
            // ViewLocalData.OperateDataBase.TransDataToTmpDatabase(MeterIDList, TableName);
             try
             {

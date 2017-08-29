@@ -332,7 +332,7 @@ namespace OperateData
                             Int_ItemsNum=itemsNum,
                             PK_LNG_METER_ID = Myreader["PK_LNG_METER_ID"].ToString(),
                             LNG_BENCH_POINT_NO = Myreader["LNG_BENCH_POINT_NO"].ToString(),
-                            AVR_ASSET_NO = Myreader["AVR_ASSET_NO"].ToString(),
+                            AVR_ASSET_NO = Myreader["AVR_BAR_CODE"].ToString(),
                             AVR_UB = Myreader["AVR_UB"].ToString(),
                             AVR_IB = Myreader["AVR_IB"].ToString(),
                             AVR_TEST_PERSON = Myreader["AVR_TEST_PERSON"].ToString(),

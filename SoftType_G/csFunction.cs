@@ -621,7 +621,7 @@ namespace SoftType_G
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
 
                 strOracleSQL_Name = strOracleSQL_Name + "QDDL,";  //起动电流
-                strValue = Get_METER_START_NO_LOAD("0002", "chrDL");
+                strValue = (Convert.ToDouble( Get_METER_START_NO_LOAD("0002", "chrDL"))*1000).ToString()+"A";
                 //if (strValue != "")
                 //    strValue = (double.Parse(strValue) * double.Parse(strIb)).ToString().Trim();
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
@@ -882,17 +882,43 @@ namespace SoftType_G
                         continue;
                     }
 
-                    if (Convert.ToDouble(red["dblxIb"].ToString().Trim()) > 1)
+                    if (Convert.ToDouble(red["dblxIb"].ToString().Trim()) >= 1)
                     {
-                        if (((int)(Convert.ToDouble(strMinIb) * Convert.ToDouble(red["dblxIb"].ToString().Trim()) + 0.5)).ToString() == strMaxIb)
-                        {
-                            strValue = Get_FZDLDM("IMAX");
-                        }
-                        else
-                        {
-                            strValue = Get_FZDLDM("0.5IMAX");
+                        int PrjId = Convert.ToInt16(red["chrProjectNo"].ToString().Trim().Substring(1, 3)) / 5;
+                        switch (PrjId)
+                        { 
+                            case 33:
+                            case 20:
+                            case 46:
+                            case 59:
+                            case 80:
+                                strValue=Get_FZDLDM("IMAX");
+                                break;
+                            case 21:
+                            case 34:
+                            case 47:
+                            case 60:
+                            case 81:
+                                strValue = Get_FZDLDM("0.5IMAX");
+                                break;
+                            case 26:
+                            case 39:
+                            case 52:
+                            case 65:
+                            case 86:
+                                strValue = Get_FZDLDM("1.0IB");
+                                break;
 
                         }
+                        //if (((int)(Convert.ToDouble(strMinIb) * Convert.ToDouble(red["dblxIb"].ToString().Trim()) + 0.5)).ToString() == strMaxIb)
+                        //{
+                        //    strValue = Get_FZDLDM("IMAX");
+                        //}
+                        //else
+                        //{
+                        //    strValue = Get_FZDLDM("0.5IMAX");
+
+                        //}
                     }
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 

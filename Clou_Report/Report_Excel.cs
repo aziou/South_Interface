@@ -298,10 +298,10 @@ namespace Clou_Report
             IRow dataRow;
             foreach (string temp in zcbh)
             {
-                 
-                dataRow = sheet.GetRow(cellStart);
                 sheet.AddMergedRegion(new NPOI.SS.Util.CellRangeAddress(cellStart, cellEnd, colNum, colNum));
-                dataRow.GetCell(colNum).SetCellValue(Convert.ToDateTime(temp).ToString("yyyy  MM  dd"));
+                dataRow = sheet.GetRow(cellStart);
+                
+                dataRow.GetCell(colNum).SetCellValue(Convert.ToDateTime(Jjrq[0]).ToString("yyyy  MM  dd"));
                 cellStart = cellStart + RowInterval;
                 cellEnd = cellEnd + RowInterval;
                 

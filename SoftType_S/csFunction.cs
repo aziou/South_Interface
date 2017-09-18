@@ -508,7 +508,8 @@ namespace SoftType_S
             string str_CheckTime = OperateData.FunctionXml.ReadElement("NewUser/CloumMIS/Item", "Name", "CheckTimeFlag", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
 
             string str_CheckName = OperateData.FunctionXml.ReadElement("NewUser/CloumMIS/Item", "Name", "cmb_Jyy", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
-            string strSQL = "SELECT * FROM METER_INFO where PK_LNG_METER_ID='" + PK_ID + "' and DTM_TEST_DATE=#" + DataCore.Global.GB_Base.MultiCheckTime + "# and AVR_TEST_PERSON = '" + str_CheckName + "'";
+            string strSQL = "SELECT * FROM METER_INFO where PK_LNG_METER_ID='" + PK_ID + "' and DTM_TEST_DATE=#" + DataCore.Global.GB_Base.MultiCheckTime + "#";
+           // string strSQL = "SELECT * FROM METER_INFO where PK_LNG_METER_ID='" + PK_ID + "' and DTM_TEST_DATE=#" + DataCore.Global.GB_Base.MultiCheckTime + "# and AVR_TEST_PERSON = '" + str_CheckName + "'";
             OleDbConnection AccessConntion = new OleDbConnection(DataCore.Global.GB_Base.AccessLink);
             AccessConntion.Open();
             OleDbCommand ccmd = new OleDbCommand(strSQL, AccessConntion);

@@ -69,3 +69,4 @@ D:\AziouStudio\South_Interface\Driver_Interface\bin\Debug\Driver_Interface.dll
 D:\AziouStudio\South_Interface\Driver_Interface\bin\Debug\Driver_Interface.pdb
 D:\AziouStudio\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.dll
 D:\AziouStudio\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.pdb
+D:\AziouStudio\South_Interface\Driver_Interface\obj\Debug\Driver_Interface.csprojResolveAssemblyReference.cache

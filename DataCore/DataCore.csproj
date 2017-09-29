@@ -45,6 +45,7 @@
     <Compile Include="MeterErrorCol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportModel\ST_Repetition.cs" />
+    <Compile Include="Struct\3220ErrorScheme.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

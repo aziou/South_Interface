@@ -1,0 +1,12 @@
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\SoftType_3220.dll
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\SoftType_3220.pdb
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\DataCore.dll
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\OperateData.dll
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\DataCore.pdb
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\South_Interface\SoftType_3220\bin\Debug\OperateData.pdb
+D:\AziouStudio\South_Interface\SoftType_3220\obj\Debug\SoftType_3220.csprojResolveAssemblyReference.cache
+D:\AziouStudio\South_Interface\SoftType_3220\obj\Debug\SoftType_3220.dll
+D:\AziouStudio\South_Interface\SoftType_3220\obj\Debug\SoftType_3220.pdb

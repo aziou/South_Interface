@@ -332,7 +332,7 @@ namespace OperateData
                             Int_ItemsNum=itemsNum,
                             PK_LNG_METER_ID = Myreader["PK_LNG_METER_ID"].ToString(),
                             LNG_BENCH_POINT_NO = Myreader["LNG_BENCH_POINT_NO"].ToString(),
-                            AVR_ASSET_NO = Myreader["AVR_BAR_CODE"].ToString(),
+                            AVR_ASSET_NO = Myreader["AVR_ASSET_NO"].ToString().Trim() == "" ? Myreader["AVR_BAR_CODE"].ToString().Trim() : Myreader["AVR_ASSET_NO"].ToString().Trim(),
                             AVR_UB = Myreader["AVR_UB"].ToString(),
                             AVR_IB = Myreader["AVR_IB"].ToString(),
                             AVR_TEST_PERSON = Myreader["AVR_TEST_PERSON"].ToString(),
@@ -350,6 +350,43 @@ namespace OperateData
                     return Temp_Base;
                 }
 
+            }
+            else if (Soft_Type == "CL3220NW")
+            {
+                using (OleDbConnection conn = new OleDbConnection(datapath))
+                {
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+
+                    OleDbCommand cmd = new OleDbCommand(SQL, conn);
+                    OleDbDataReader Myreader = null;
+                    Myreader = cmd.ExecuteReader();
+
+                    while (Myreader.Read())
+                    {
+                        Temp_Base.Add(new MeterBaseInfoFactor()
+                        {
+                            Int_ItemsNum = itemsNum,
+                            PK_LNG_METER_ID = Myreader["INT_MYID"].ToString(),
+                            LNG_BENCH_POINT_NO = Myreader["INT_TABLE_NO"].ToString(),
+                            AVR_ASSET_NO = Myreader["STR_BARCODE"].ToString().Trim() ,
+                            AVR_UB = Myreader["STR_VOLTAGE"].ToString(),
+                            AVR_IB = Myreader["STR_CURRENT"].ToString(),
+                            AVR_TEST_PERSON = Myreader["STR_INSPECTOR_MEMBER"].ToString(),
+                            AVR_TOTAL_CONCLUSION = Myreader["STR_TEST_CONCLUSION"].ToString(),
+                            //CHR_UPLOAD_FLAG = Myreader["BOL_UPLOAD_FLAG"].ToString().Trim() ,
+                            CHR_UPLOAD_FLAG = Myreader["BOL_UPLOAD_FLAG"].ToString().Trim() == "True" ? "已上传" : "未上传",
+                            AVR_SEAL_1 = Myreader["STR_SEAL001"].ToString().Trim(),
+                            AVR_SEAL_2 = "",
+                            AVR_SEAL_3 = "",
+                            //DTM_VALID_DATE = Myreader["DTM_VALID_DATE"].ToString(),
+                            DTM_TEST_DATE = Myreader["DTE_TESTING_DATE"].ToString().Trim(),
+                        });
+                        itemsNum++;
+                    }
+                    conn.Close();
+                    return Temp_Base;
+                }
             }
             else
             {
@@ -694,12 +731,13 @@ namespace OperateData
         {
             int result = 0;
             string OracleLink = OperateData.FunctionXml.ReadElement("NewUser/CloumMIS/Item", "Name", "OracleLink", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
+            OracleConnection conn = null;
             string ERRORsql = "";
             try
             {
-                using (OracleConnection conn = new OracleConnection(OracleLink))
+                using (conn = new OracleConnection(OracleLink))
                 {
-                   
+
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
                     foreach (String temp in sql)
@@ -720,9 +758,13 @@ namespace OperateData
             {
                 PublicFunction.WriteLog(ERRORsql.ToString(), DataCore.Global.GB_Base.LogPath + @"\Log.txt");
                 PublicFunction.WriteLog(e.ToString(), DataCore.Global.GB_Base.LogPath + @"\Log.txt");
-            
+
                 ExceptionStr = e.Message.ToString();
                 return -1;
+            }
+            finally
+            {
+                conn.Close();
             }
             ExceptionStr = "";
             return result;

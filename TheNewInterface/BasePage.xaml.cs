@@ -36,6 +36,7 @@ namespace TheNewInterface
             cmb_SoftType.Items.Add("CL3000S");
             cmb_SoftType.Items.Add("CL3000F");
             cmb_SoftType.Items.Add("CL3000DV80");
+            cmb_SoftType.Items.Add("CL3220NW");
             //地区编号
             //铅封加载
             cmb_Seal01.Items.Add("左耳封");
@@ -176,7 +177,7 @@ namespace TheNewInterface
             //DataCore.Global.GB_Base.AccessLink = Sql_word_1 + txt_DataPath.Text.ToString().Trim() + Sql_word_2;
             LinkAccessWord = Sql_word_1 + txt_DataPath.Text.ToString().Trim() + Sql_word_2;
             OperateData.FunctionXml.UpdateElement(strSection, "Name", "AccessLink", "Value", Sql_word_1+txt_DataPath.Text.ToString().Trim()+Sql_word_2, BaseConfigPath);
-
+            OperateData.FunctionXml.UpdateElement(strSection, "Name", "AccessSchemeLink", "Value", Sql_word_1 + txt_DataPath.Text.ToString().Trim().Replace("CLOU_CL3220S-H_DATA", "CLOU_CL3220S-H_SCHEME") + Sql_word_2, BaseConfigPath);
             #endregion 
             #region 获取工单字符串
             string WorkNumLoad = "";

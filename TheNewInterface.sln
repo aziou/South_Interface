@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewLocalData", "ViewLocalD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftType_S_ZD", "SoftType_S_ZD\SoftType_S_ZD.csproj", "{45EAA3AE-2574-4F48-ADBA-FD492D61B3C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftType_3220", "SoftType_3220\SoftType_3220.csproj", "{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +157,16 @@ Global
 		{45EAA3AE-2574-4F48-ADBA-FD492D61B3C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{45EAA3AE-2574-4F48-ADBA-FD492D61B3C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{45EAA3AE-2574-4F48-ADBA-FD492D61B3C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

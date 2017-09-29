@@ -94,6 +94,7 @@ namespace TheNewInterface
                         UpDateMeterId.Add(ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[i].PK_LNG_METER_ID);
                     }
                 }
+                string testseal = ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[0].AVR_SEAL_1;
                 if (UpDateMeterId.Count == 0)
                 {
                     MessageBox.Show("你没有选择要上传的表", "提示", MessageBoxButton.YesNo, MessageBoxImage.Error);
@@ -148,6 +149,7 @@ namespace TheNewInterface
                     case "CL3000S":
                         cs_Function = new SoftType_S.csFunction();
                         break;
+                   
 
                 }
                 if (DataCore.Global.GB_Base.IsTerminal == true)
@@ -162,7 +164,9 @@ namespace TheNewInterface
                         case "CL3000S":
                             cs_Function = new SoftType_S_ZD.csFunction();
                             break;
-
+                        case "CL3220NW":
+                            cs_Function = new SoftType_3220.csFunction();
+                            break;
                     }
 
                     
@@ -188,7 +192,7 @@ namespace TheNewInterface
 
                         DataCore.Global.GB_Base.MultiCheckTime = temp.DTM_TEST_DATE.ToString().Trim();
 
-                        cs_Function.DeleteMis(temp.AVR_ASSET_NO);
+                        cs_Function.DeleteMis(temp.AVR_ASSET_NO); 
 
                         MeterUp_info.Add("第" + temp.LNG_BENCH_POINT_NO.ToString() + "表位" + cs_Function.UpadataBaseInfo(temp.PK_LNG_METER_ID, out Seal_info));
 
@@ -324,6 +328,11 @@ namespace TheNewInterface
                     ColZCBH = "PK_LNG_METER_ID";
                     ColChecktime = "DTM_TEST_DATE";
                     break;
+                case "CL3220NW":
+                    ColUpdate = "BOL_UPLOAD_FLAG";
+                    ColZCBH = "INT_MYID";
+                    ColChecktime = "DTE_TESTING_DATE";
+                    break;
 
             }
             List<string> SQL = new List<string>();
@@ -332,6 +341,14 @@ namespace TheNewInterface
                 foreach (string temp in MeterId)
                 {
                     SQL.Add(string.Format("update {0} set {1} ='{2}' where {3}='{4}' and {5} =#{6}#", csPublicMember.strTableName, ColUpdate, D_or_U.ToString(), ColZCBH, temp, ColChecktime, CheckTime));
+                }
+            }
+            else if (csPublicMember.strSoftType == "CL3220NW")
+            {
+                string Flag = D_or_U.ToString() == "0" ? "True" : "False";
+                foreach (string temp in MeterId)
+                {
+                    SQL.Add(string.Format("update {0} set {1} ='{2}' where {3}={4} and {5} =#{6}#", csPublicMember.strTableName, ColUpdate, Flag, ColZCBH, temp, ColChecktime, CheckTime));
                 }
             }
             else
@@ -428,6 +445,9 @@ namespace TheNewInterface
                     break;
                 case "CL3000S":
                     cs_Function = new SoftType_S.csFunction();
+                    break;
+                case "CL3220NW":
+                    cs_Function = new SoftType_3220.csFunction();
                     break;
 
             }
@@ -620,6 +640,11 @@ namespace TheNewInterface
                     csPublicMember.strCondition = "DTM_TEST_DATE";
                     csPublicMember.strTableName = "METER_INFO";
                     csPublicMember.strBino = "LNG_BENCH_POINT_NO";
+                    break;
+                case "CL3220NW":
+                    csPublicMember.strCondition = "DTE_TESTING_DATE";
+                    csPublicMember.strTableName = "CTD_TERMINAL_INFO";
+                    csPublicMember.strBino = "INT_TABLE_NO";
                     break;
 
             }
@@ -1259,6 +1284,9 @@ namespace TheNewInterface
                     break;
                 case "CL3000S":
                     cs_Function = new SoftType_S.csFunction();
+                    break;
+                case "CL3220NW":
+                    cs_Function = new SoftType_3220.csFunction();
                     break;
 
             }
@@ -3143,6 +3171,17 @@ namespace TheNewInterface
                 }
             }
             ViewModel.AllMeterInfo.CreateInstance().SelectMeterNum = "当前选择了<<" + intSelectNum.ToString() + ">>个表";
+        }
+
+        private void btn_AutoMakeSeal_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo.Count <= 0)
+            {
+                MessageBox.Show("当前没有数据可以添加铅封");
+                return;
+            }
+            UI.InputWindow inputwindow = new UI.InputWindow();
+            inputwindow.ShowDialog();
         }
 
 

@@ -531,12 +531,12 @@ namespace SoftType_S
             string UpdateResult = "";
             try
             {
-                DataCore.Global.GB_Base.MeterZcbh = OldRead["AVR_ASSET_NO"].ToString().Trim();
-                UpdateResult = string.Format("电表：{0}", OldRead["AVR_ASSET_NO"].ToString().Trim());
+                DataCore.Global.GB_Base.MeterZcbh = OldRead["AVR_BAR_CODE"].ToString().Trim();
+                UpdateResult = string.Format("电表：{0}", OldRead["AVR_BAR_CODE"].ToString().Trim());
                 if (DataCore.Global.GB_Base.MeterZcbh == "")
                     DataCore.Global.GB_Base.MeterZcbh = OldRead["AVR_MADE_NO"].ToString().Trim();
                 if (DataCore.Global.GB_Base.MeterZcbh == "")
-                    DataCore.Global.GB_Base.MeterZcbh = OldRead["AVR_BAR_CODE"].ToString().Trim();
+                    DataCore.Global.GB_Base.MeterZcbh = OldRead["AVR_ASSET_NO"].ToString().Trim();
 
                 strFZLXDM = OldRead["CHR_CT_CONNECTION_FLAG"].ToString().Trim();
                 DataCore.Global.GB_Base.MeterCheckDate = OldRead["DTM_TEST_DATE"].ToString().Trim();
@@ -547,7 +547,7 @@ namespace SoftType_S
                 string strIb = strValue.Substring(0, iIb);
 
                 #region 常数 AVR_AR_CONSTANT
-                MeterConstant=OldRead["AVR_AR_CONSTANT"].ToString().Trim();
+                MeterConstant = OldRead["AVR_AR_CONSTANT"].ToString().Trim();
                 if (MeterConstant.Contains("("))
                 {
                     DataCore.Global.GB_Base.Meter_Constant = Convert.ToDouble(MeterConstant.Substring(0, MeterConstant.IndexOf("(")));
@@ -556,7 +556,7 @@ namespace SoftType_S
                 {
                     DataCore.Global.GB_Base.Meter_Constant = Convert.ToDouble(MeterConstant);
                 }
-                
+
                 #endregion
 
                 #region ----------基本检定记录
@@ -604,15 +604,15 @@ namespace SoftType_S
                 //strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
                 strOracleSQL_Name = strOracleSQL_Name + "GLXHSYJLDM,";    //功率消耗试验结论代码
-                strOracleSQL_Value = strOracleSQL_Value + "','" +ResultsCode(Get_METER_POWER_CONSUM_DATA());
+                strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_POWER_CONSUM_DATA());
                 strOracleSQL_Name = strOracleSQL_Name + "DYDYYXSYJLDM,";    //电源电压影响试验结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                 //strOracleSQL_Name = strOracleSQL_Name + "DYFWSYJLDM,";    //电压范围试验结论代码
                 //strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                 strOracleSQL_Name = strOracleSQL_Name + "DYZJHDSZDYXSYJLDM,";    //电压暂降或短时中断影响试验结论代码
-               
+
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_COMMUNICATION("012"));
-              
+
                 strOracleSQL_Name = strOracleSQL_Name + "DYDSZDDSZDYXSYJLDM,";    //电压短时中断对时钟的影响试验结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                 strOracleSQL_Name = strOracleSQL_Name + "DYCSJZDDSZYXSYJLDM,";    //电压长时间中断对时钟影响试验结论代码
@@ -627,7 +627,7 @@ namespace SoftType_S
                 #region 功能检查
 
                 #endregion
-               
+
                 strOracleSQL_Name = strOracleSQL_Name + "DNJLGNJCJLDM,";    //电能计量功能检查结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                 strOracleSQL_Name = strOracleSQL_Name + "DLDJGNJCJLDM,";    //电量冻结功能检查结论代码
@@ -649,25 +649,25 @@ namespace SoftType_S
                 strOracleSQL_Name = strOracleSQL_Name + "TXGNJCJLDM,";    //通信功能检查结论代码
                 if (Get_METER_CARRIER_WAVE() == "不合格")
                 {
-                    
+
                     strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_CARRIER_WAVE());
-                   // strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_COMMUNICATION("001"));
+                    // strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_COMMUNICATION("001"));
                     strOracleSQL_Name = strOracleSQL_Name + "TXGYYZXJCJLDM,";    //通信规约一致性检查结论代码 METER_STANDARD_DLT_DATA
                     strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_CARRIER_WAVE());
                 }
-                else 
+                else
                 {
                     strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_COMMUNICATION("001"));
                     //strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_CARRIER_WAVE());
                     strOracleSQL_Name = strOracleSQL_Name + "TXGYYZXJCJLDM,";    //通信规约一致性检查结论代码 METER_STANDARD_DLT_DATA
                     strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(Get_METER_COMMUNICATION("001"));
                 }
-                
-                
+
+
                 strOracleSQL_Name = strOracleSQL_Name + "SJCSXKGRSYJLDM,";    //数据传输线抗干扰试验结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                 #region 误差一致性
-                
+
                 strOracleSQL_Name = strOracleSQL_Name + "WCBCSYJLDM,";    //误差变差试验结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + Get_METER_CONSISTENCY_DATA("511");
                 strOracleSQL_Name = strOracleSQL_Name + "WCYZXSYJLDM,";    //误差一致性试验结论代码
@@ -675,7 +675,7 @@ namespace SoftType_S
                 strOracleSQL_Name = strOracleSQL_Name + "FZDLSYBCSYJLDM,";    //负载电流升降变差试验结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + Get_METER_CONSISTENCY_DATA("611");
                 strOracleSQL_Name = strOracleSQL_Name + "YZXSYJLDM,";    //一致性试验结论代码
-                strOracleSQL_Value = strOracleSQL_Value + "','" + Get_METER_RESULTS("1031");//1031
+                strOracleSQL_Value = strOracleSQL_Value + "','" +  ResultsCode( Get_METER_RESULTS("1031"));//1031
                 #endregion
                 #endregion
 
@@ -714,7 +714,7 @@ namespace SoftType_S
 
                 strOracleSQL_Name = strOracleSQL_Name + "JBWCSYJLDM,";  //基本误差试验结论代码
                 strValue = Get_METER_RESULTS("103");
-                if (strValue == "")strValue= Get_METER_Error();
+                if (strValue == "") strValue = Get_METER_Error();
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
                 strOracleSQL_Name = strOracleSQL_Name + "RJSWCSYJLDM,";  //日计时误差试验结论代码
                 strValue = Get_METER_COMMUNICATION("002");
@@ -728,10 +728,10 @@ namespace SoftType_S
                     if (iTmpPoint > 0)
                         strValue = strValue.Substring(iTmpPoint + 1, strValue.Length - iTmpPoint - 1);
                 }
-                
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
-                
-                
+
+                strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+
+
 
 
 
@@ -749,7 +749,7 @@ namespace SoftType_S
                 strValue = Get_METER_COMMUNICATION("01402");
                 str_xlzqwc = strValue + ",";
                 strValue = Get_METER_COMMUNICATION("01502");
-                str_xlzqwc = str_xlzqwc+strValue + ",";
+                str_xlzqwc = str_xlzqwc + strValue + ",";
                 strValue = Get_METER_COMMUNICATION("01602");
                 str_xlzqwc = str_xlzqwc + strValue + ",";
                 if (str_xlzqwc.Contains("合格"))
@@ -768,13 +768,13 @@ namespace SoftType_S
 
                 strOracleSQL_Name = strOracleSQL_Name + "ZDXLWCSYJLDM,";  //最大需量误差试验结论代码
                 strValue = Get_METER_COMMUNICATION("015");
-                if (strValue == "")strValue= Get_METER_COMMUNICATION("014");
-                if (strValue == "") strValue=Get_METER_COMMUNICATION("016");
-          
+                if (strValue == "") strValue = Get_METER_COMMUNICATION("014");
+                if (strValue == "") strValue = Get_METER_COMMUNICATION("016");
+
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
                 strOracleSQL_Name = strOracleSQL_Name + "ZDXLGNJCJLDM,";    //最大需量功能检查结论代码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
-                
+
                 //strValue = Get_METER_CONSISTENCY_DATA("411020700");
                 //strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
                 //strOracleSQL_Name = strOracleSQL_Name + "WCBCSYJLDM,";  //误差变差试验结论代码
@@ -807,7 +807,7 @@ namespace SoftType_S
                 string strSection = "MIS_Info/UserName/Item";
                 string strXmlValue = "";
                 strOracleSQL_Value = strOracleSQL_Value + "','" + OperateData.FunctionXml.ReadElement("NewUser/CloumMIS/Item", "Name", "txt_Hyy", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
-                
+
                 strOracleSQL_Name = strOracleSQL_Name + "DQBM,";  //地区编码
                 strOracleSQL_Value = strOracleSQL_Value + "','" + DataCore.Global.GB_Base.CompanyDQBH;
 
@@ -825,7 +825,7 @@ namespace SoftType_S
                 strOracleSQL_Value = strOracleSQL_Value + "',to_date('" + strValue + "','yyyy-mm-dd hh24:mi:ss')";
 
                 strOracleSQL_Name = strOracleSQL_Name + "HYRQ";  //核验日期
-                strValue = Convert.ToDateTime(OldRead["DTM_TEST_DATE"]).ToShortDateString().Trim() ;
+                strValue = Convert.ToDateTime(OldRead["DTM_TEST_DATE"]).ToShortDateString().Trim();
                 strOracleSQL_Value = strOracleSQL_Value + ",to_date('" + strValue + "','yyyy-mm-dd hh24:mi:ss')";
 
                 #endregion
@@ -883,7 +883,7 @@ namespace SoftType_S
                         strOracleSQL_Name = strOracleSQL_Name + "JFSJ";//时间
                         strValue = Convert.ToDateTime(OldRead["DTM_TEST_DATE"]).ToShortDateString().Trim() + " " + DateTime.Now.ToLongTimeString().Trim();
                         //strValue = OldRead["DTM_TEST_DATE"].ToString().Trim();
-               
+
                         strOracleSQL_Value = strOracleSQL_Value + "',to_date('" + strValue + "','yyyy-mm-dd hh24:mi:ss')";
 
                         strOracleSQL = strOracleSQL + strOracleSQL_Name + ")  Values (" + strOracleSQL_Value + ")";
@@ -897,11 +897,16 @@ namespace SoftType_S
 
                 AccessConntion.Close();
                 OldRead.Close();
-                
+
                 watch.Stop();
                 Runtime = Runtime + "执行：" + watch.ElapsedMilliseconds.ToString() + "ms";
             }
             catch (Exception Error)
+            {
+                AccessConntion.Close();
+                OldRead.Close();
+            }
+            finally
             {
                 AccessConntion.Close();
                 OldRead.Close();
@@ -1383,7 +1388,7 @@ namespace SoftType_S
 
                     strOracleSQL_Name = strOracleSQL_Name + "GLFXDM,";   //功率方向代码
 
-                    strValue = Get_GLFXDM(red["CHR_POWER_TYPE"].ToString().Trim());
+                    strValue = Get_GLFXDM(red["CHR_POWER_TYPE"].ToString().Trim(),true);
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                     strOracleSQL_Name = strOracleSQL_Name + "GLYSDM,";   //功率因数代码
                     if (red["AVR_ITEM_NAME"].ToString().Trim().Contains("0.5L"))
@@ -2108,6 +2113,45 @@ namespace SoftType_S
                     break;
                 case "1":
                     strResults = "3";
+                    break;
+                case "2":
+                    strResults = "2";
+                    break;
+                case "3":
+                    strResults = "4";
+                    break;
+                case "4":
+                    strResults = "5";
+                    break;
+                case "5":
+                    strResults = "6";
+                    break;
+                case "6":
+                    strResults = "7";
+                    break;
+                case "7":
+                    strResults = "8";
+                    break;
+            }
+
+            return strResults;
+        }
+
+        /// <summary>
+        /// 功率方向代码
+        /// </summary>
+        /// <param name="strValue"></param>
+        /// <returns></returns>
+        private static string Get_GLFXDM(string strValue,bool IsSpecial)
+        {
+            string strResults = "1";
+            switch (strValue)
+            {
+                case "0":
+                    strResults = "1";
+                    break;
+                case "1":
+                    strResults = "1";
                     break;
                 case "2":
                     strResults = "2";

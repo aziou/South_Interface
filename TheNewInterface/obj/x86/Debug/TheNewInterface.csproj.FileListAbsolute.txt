@@ -706,3 +706,7 @@ D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\TheNewInterface_Mar
 D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\TheNewInterface.g.resources
 D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\TheNewInterface.Properties.Resources.resources
 D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\TheNewInterface.csproj.GenerateResource.Cache
+D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\UI\InputWindow.baml
+D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\UI\InputWindow.g.cs
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_3220.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_3220.pdb

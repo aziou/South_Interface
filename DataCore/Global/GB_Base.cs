@@ -52,6 +52,8 @@ namespace DataCore.Global
 
         public static readonly string AccessLink = ReadElement("NewUser/CloumMIS/Item", "Name", "AccessLink", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
 
+        public static readonly string AccessSchemeLink = ReadElement("NewUser/CloumMIS/Item", "Name", "AccessSchemeLink", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
+
         public static string OracleLink = ReadElement("NewUser/CloumMIS/Item", "Name", "OracleLink", "Value","",System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml");
 
         public static string UpdateMeterTime = "";
@@ -68,6 +70,7 @@ namespace DataCore.Global
          /// </summary>
         public static bool IsUpDisOK = Convert.ToBoolean(ReadElement("NewUser/CloumMIS/Item", "Name", "rbtn_disOkFalse", "Value", "False", BaseConfigPath));
 
+       
         #endregion
 
         #region 报表变量

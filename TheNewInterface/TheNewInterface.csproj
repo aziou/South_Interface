@@ -73,6 +73,9 @@
     <Compile Include="OracleConfig.xaml.cs">
       <DependentUpon>OracleConfig.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AllMeterInfo.cs" />
     <Compile Include="ViewModel\MeterInfoItem.cs" />
     <Compile Include="ViewModel\ViewMember.cs" />
@@ -120,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OracleConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\InputWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +204,10 @@
     <ProjectReference Include="..\OperateOracle\OperateOracle.csproj">
       <Project>{C8D1AFC4-8DD4-4037-AE42-C5E07E3B11F8}</Project>
       <Name>OperateOracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftType_3220\SoftType_3220.csproj">
+      <Project>{16A8E2FB-4ECF-46AC-BBFB-599C6C311E5F}</Project>
+      <Name>SoftType_3220</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoftType_G\SoftType_G.csproj">
       <Project>{743689C5-FAB0-497F-879A-1EBA5C0B1A86}</Project>

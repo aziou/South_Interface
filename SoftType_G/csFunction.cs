@@ -621,7 +621,28 @@ namespace SoftType_G
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
 
                 strOracleSQL_Name = strOracleSQL_Name + "QDDL,";  //起动电流
-                strValue = (Convert.ToDouble( Get_METER_START_NO_LOAD("0002", "chrDL"))*1000).ToString()+"A";
+                try
+                {
+                    if (DataCore.Global.GB_Base.SoftType == "CL3000DV80")
+                    {
+                        strValue = (Convert.ToDouble(Get_METER_START_NO_LOAD("0002", "chrDL")) * 0.001).ToString() + "A";
+
+                    }
+                    else
+                    {
+                        strValue = (Convert.ToDouble(Get_METER_START_NO_LOAD("0002", "chrDL")) * 1000).ToString() + "A";
+                    }
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    strValue = Get_METER_START_NO_LOAD("0002", "chrDL").Trim() == "" ? "0" : Get_METER_START_NO_LOAD("0002", "chrDL").Trim() + "mA";
+                }
+             
+               
                 //if (strValue != "")
                 //    strValue = (double.Parse(strValue) * double.Parse(strIb)).ToString().Trim();
                 strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;

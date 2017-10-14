@@ -1201,16 +1201,39 @@ namespace TheNewInterface
         private string GetDataColName(string Name)
         {
             string ColName = "";
-            switch (Name)
+
+            switch (csPublicMember.strSoftType)
             {
-                case "检定时间:":
-                    ColName = "DTM_TEST_DATE";
+                case "CL3000G":
+                case "CL3000F":
+                case "CL3000DV80":
+                    switch (Name)
+                    {
+                        case "检定时间:":
+                            ColName = "datJdrq";
+                            break;
+                        case "资产编号:":
+                            ColName = "chrJlbh";
+                            break;
+
+                    }
                     break;
-                case "资产编号:":
-                    ColName = "AVR_ASSET_NO";
+                case "CL3000S":
+                    switch (Name)
+                    {
+                        case "检定时间:":
+                            ColName = "DTM_TEST_DATE";
+                            break;
+                        case "资产编号:":
+                            ColName = "AVR_ASSET_NO";
+                            break;
+
+                    }
                     break;
 
             }
+
+           
             return ColName;
         }
         private string GetDataColValue(string Name,string ColValue)
@@ -1219,9 +1242,13 @@ namespace TheNewInterface
             switch (Name)
             {
                 case "DTM_TEST_DATE":
+                case "datJdrq":
+
                     ColName = @"#" + ColValue + @"#";
                     break;
                 case "AVR_ASSET_NO":
+                case "chrJlbh":
+
                     ColName = "'" + ColValue + "'";
                     break;
 

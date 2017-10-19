@@ -70,7 +70,7 @@ namespace DataCore.Global
          /// </summary>
         public static bool IsUpDisOK = Convert.ToBoolean(ReadElement("NewUser/CloumMIS/Item", "Name", "rbtn_disOkFalse", "Value", "False", BaseConfigPath));
 
-       
+        public static string TmpDataPath = "";
         #endregion
 
         #region 报表变量

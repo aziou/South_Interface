@@ -116,7 +116,7 @@ namespace ViewLocalData
 
                 foreach (DataRow row in TableName.Rows)
                 {
-                   
+                    if (row["TABLE_NAME"].ToString().Contains("Tmp")) continue;
                     TableList.Add(row["TABLE_NAME"].ToString());
                 }
             }
@@ -212,7 +212,15 @@ namespace ViewLocalData
                             }
                         }
                         string sql = "select * from " + tempName + " where " + IdColumnName + "='" + meterId + "'";
-
+                        switch (DataCore.Global.GB_Base.SoftType)
+                        { 
+                            case "CL3000S":
+                                sql = "select * from " + tempName + " where " + IdColumnName + "='" + meterId + "'";
+                                break;
+                            case "CL3000G":
+                                sql = "select * from " + tempName + " where " + IdColumnName + "=" + meterId + "";
+                                break;
+                        }
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
 
                         OleDbDataReader myreader = null;
@@ -226,20 +234,48 @@ namespace ViewLocalData
                             {
                                 if (temprow["ORDINAL_POSITION"].ToString() == "1")
                                 {
-                                    makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), NewMeterId);
+                                    if (temprow["DATA_TYPE"].ToString() == "3")
+                                    {
+                                        makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), NewMeterId, true);
+                                    }
+                                    else
+                                    {
+                                        makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), NewMeterId);
+                                    }
+                                    
                            
                                     continue;
                                 }
-                                makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), myreader[temprow["COLUMN_NAME"].ToString()].ToString().Trim());
-                            }
+
+                                if (temprow["DATA_TYPE"].ToString() == "3")
+                                {
+                                    makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), myreader[temprow["COLUMN_NAME"].ToString()].ToString().Trim(),true);
+                         
+                                }
+                                else
+                                {
+                                    makeSql(ref sqlKey, ref sqlValue, temprow["COLUMN_NAME"].ToString(), myreader[temprow["COLUMN_NAME"].ToString()].ToString().Trim());
+                         
+                                }
+                               }
                             sqlKey = "(" + sqlKey.Substring(1, sqlKey.Length - 1) + ")";
                             sqlValue = "(" + sqlValue.Substring(1, sqlValue.Length - 1) + ")";
                             InserSQL = "Insert into " + "TMP_" + tempName + sqlKey + " Values " + sqlValue;
-
+                            switch (DataCore.Global.GB_Base.SoftType)
+                            {
+                                case "CL3000S":
+                                    InserSQL = "Insert into " + "TMP_" + tempName + sqlKey + " Values " + sqlValue;
+                                    break;
+                                case "CL3000G":
+                                    InserSQL = "Insert into " + tempName+"Tmp"+ sqlKey + " Values " + sqlValue;
+                                    break;
+                            }
                             InsertList.Add(InserSQL);
 
                         }
-                        OperateData.PublicFunction.ExcuteAccess(InsertList);
+                        
+
+                        OperateData.PublicFunction.ExcuteAccess(InsertList,DataCore.Global.GB_Base.TmpDataPath,1);
 
                     }
 
@@ -259,6 +295,12 @@ namespace ViewLocalData
         {
             str_key = str_key + "," + dataKey;
             str_value = str_value + "," + "'" + dataValue + "'"; 
+        }
+
+        public void makeSql(ref string str_key, ref string str_value, string dataKey, string dataValue,bool IsNumber)
+        {
+            str_key = str_key + "," + dataKey;
+            str_value = str_value + "," + "" + dataValue + "";
         }
 
         public  void Test()
@@ -307,8 +349,31 @@ namespace ViewLocalData
         }
 
         public static void DeleteTmpData(List<string> Tmp)
-        { 
+        {
             string TmpDataPath = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterDataTmp.mdb";
+            string baseMeterInfoTb = "";
+            IEnumerable<string> TableName = null;
+            switch (DataCore.Global.GB_Base.SoftType)
+            { 
+                case "CL3000S":
+                    TmpDataPath = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterDataTmp.mdb";
+                    DataCore.Global.GB_Base.TmpDataPath = TmpDataPath;
+                    baseMeterInfoTb = "METER_INFO";
+                    TableName = from n in Tmp
+                                
+                                select "TMP_" + n;
+                    break;
+                case"CL3000G":
+                    TmpDataPath = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterData.mdb";
+                    DataCore.Global.GB_Base.TmpDataPath = TmpDataPath;
+                    baseMeterInfoTb = "MeterInfo";
+                    TableName = from n in Tmp 
+                                 select n+"Tmp";
+                    break;
+                default:
+                    break;
+            }
+           
             string Sql_word_1 = "Provider=Microsoft.ACE.OleDb.12.0;Data Source=";
             string Sql_word_2 = ";Persist Security Info=False";
 
@@ -320,13 +385,14 @@ namespace ViewLocalData
                     {
                         conn.Open();
                     }
-                    foreach (string temp in Tmp)
+                    foreach (string temp in TableName)
                     {
-                        if (temp == "METER_INFO")
+                        if (temp == baseMeterInfoTb)
                         {
                             continue;
                         }
-                        string sql = "delete from " + "TMP_"+temp + " where 1=1";
+                        //string sql = "delete from " + "TMP_" + temp + " where 1=1";
+                        string sql = "delete from " + temp + " where 1=1";
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                     }
@@ -349,11 +415,23 @@ namespace ViewLocalData
 
         public static void DeleteTmpBaseInfo(List<string> lis_bnum)
         {
-            string TmpDataPath = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterDataTmp.mdb";
+          
             string Sql_word_1 = "Provider=Microsoft.ACE.OleDb.12.0;Data Source=";
             string Sql_word_2 = ";Persist Security Info=False";
-
-            using (OleDbConnection conn = new OleDbConnection(Sql_word_1 + TmpDataPath + Sql_word_2))
+            string baseTb = "", BnumKey = "";
+            switch (DataCore.Global.GB_Base.SoftType)
+            { 
+                case "CL3000S":
+                    baseTb = "TMP_METER_INFO";
+                    BnumKey = "LNG_BENCH_POINT_NO";
+                    break;
+                case "CL3000G":
+                     baseTb = "MeterInfoTmp";
+                    BnumKey = "intBno";
+                    break;
+                    
+            }
+            using (OleDbConnection conn = new OleDbConnection(Sql_word_1 + DataCore.Global.GB_Base.TmpDataPath + Sql_word_2))
             {
                 try
                 {
@@ -364,7 +442,7 @@ namespace ViewLocalData
                     foreach (string temp in lis_bnum)
                     {
 
-                        string sql = "delete from " + "TMP_METER_INFO  where LNG_BENCH_POINT_NO="+temp+"";
+                        string sql = "delete from " + baseTb + "  where " + BnumKey + "=" + temp + "";
                         OleDbCommand cmd = new OleDbCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                     }

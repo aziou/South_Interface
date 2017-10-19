@@ -99,6 +99,38 @@ namespace OperateData
         /// 执行access  _SQL
         /// </summary>
         /// <param name="SQL"></param>
+        public static bool ExcuteAccess(List<string> SQL_list,string DataPath,int copy)
+        {
+            try
+            {
+                string Path = "";
+                string sql_word_1 = "Provider=Microsoft.ACE.OleDb.12.0;Data Source=";
+                string Sql_word_2 = ";Persist Security Info=False";
+                Path = DataCore.Global.GB_Base.AccessLink.Substring(0, DataCore.Global.GB_Base.AccessLink.LastIndexOf(@"\")) + @"\ClouMeterDataTmp.mdb";
+                using (OleDbConnection conn = new OleDbConnection(DataPath + Sql_word_2))
+                {
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    foreach (string temp in SQL_list)
+                    {
+               
+                        OleDbCommand cmd = new OleDbCommand(temp, conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+                return true;
+            }
+            catch (Exception Exlist)
+            {
+                return false;
+            }
+
+        }
+        /// <summary>
+        /// 执行access  _SQL
+        /// </summary>
+        /// <param name="SQL"></param>
         public bool ExcuteAccess(List<string> SQL_list,string Tmppath,bool Is3000G)
         {
             try

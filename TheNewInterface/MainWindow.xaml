@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TheNewInterface.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="(南网版本)上传接口-2017-10-10（Ver:2.1.18）" 
+        Title="(南网版本)上传接口-2017-10-19（Ver:2.1.19）" 
         MinHeight="850" MaxHeight="850"
         MinWidth="1350" MaxWidth="1350" WindowStartupLocation="CenterScreen" Icon="/TheNewInterface;component/clou.ico">
     <Window.Resources>

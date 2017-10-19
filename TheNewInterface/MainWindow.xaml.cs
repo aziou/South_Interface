@@ -3097,6 +3097,7 @@ namespace TheNewInterface
                 MessageBox.Show("请选择需要导入临时库的数据！");
                 return;
             }
+            btn_TransTmp.IsEnabled = false;
             Thread TransThread;
             TransThread = new Thread(new ThreadStart(TransDataToTmpDataBase));
             TransThread.IsBackground=true;
@@ -3151,19 +3152,40 @@ namespace TheNewInterface
             for (int i = 0; i<ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView.Count; i++)
             {
                 MeterIDList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][0].ToString());
-                MeterBnumList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][2].ToString());
+                switch (DataCore.Global.GB_Base.SoftType)
+                {
+                    case "CL3000S":
+                        MeterBnumList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][2].ToString());
+                        break;
+                    case "CL3000G":
+                        MeterBnumList.Add(ViewLocalData.ClouModel.ClouMember.CreateInstance().DataBase.DefaultView[i][1].ToString());
+                        break;
+                    default:
+                        break;
+                }
+               
             }
             ViewLocalData.OperateDataBase.DeleteTmpBaseInfo(MeterBnumList);
            // ViewLocalData.OperateDataBase.TransDataToTmpDatabase(MeterIDList, TableName);
             try
             {
                 Random rdNum = new Random();
-                int RandomNum = rdNum.Next(0, 1000);
+                int RandomNum = rdNum.Next(0, 10000);
                 int RandomNum001 = rdNum.Next(0, 25);
                 foreach (string tempIdList in MeterIDList)
                 {
                     #region newID
-                    NewID_METER = DateTime.Now.ToString("yyyyMMddHH") + RandomNum.ToString() + RandomNum001.ToString("D3");
+                    switch (DataCore.Global.GB_Base.SoftType)
+                    {
+                        case "CL3000G":
+                            NewID_METER = DateTime.Now.ToString("dd") + RandomNum.ToString() + RandomNum001.ToString("D3");
+                            break;
+                        case "CL3000S":
+                            NewID_METER = DateTime.Now.ToString("yyyyMMddHH") + RandomNum.ToString() + RandomNum001.ToString("D3");
+                            break;
+                    }
+
+
                     RandomNum001++;
                     #endregion
                     viewBase.MakeInserSql(TableName, tempIdList, NewID_METER);
@@ -3171,9 +3193,14 @@ namespace TheNewInterface
 
                 MessageBox.Show("导入临时库成功！");
             }
-            catch(Exception errorWord)
+            catch (Exception errorWord)
             {
+               
                 MessageBox.Show("导入临时库失败！" + errorWord.Message);
+            }
+            finally
+            {
+                btn_TransTmp.IsEnabled = true;
             }
             
 

@@ -552,6 +552,8 @@ namespace SoftType_G
                 strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                 strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";
                 strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
+                strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                 strOracleSQL_Name = strOracleSQL_Name + "SJBZ,";
                 strOracleSQL_Value = strOracleSQL_Value + "','" + DataCore.Global.GB_Base.FirstCheckFlag + "";
                 strOracleSQL_Name = strOracleSQL_Name + "BW,";
@@ -813,10 +815,14 @@ namespace SoftType_G
                         strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                         strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";
                         strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
+                        strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                         strOracleSQL_Name = strOracleSQL_Name + "BGBZ,";
                         strOracleSQL_Value = strOracleSQL_Value + "','10";
 
                         strOracleSQL_Name = strOracleSQL_Name + "FYZCBH,";
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + OldRead[strCode].ToString().Trim();
+                        strOracleSQL_Name = strOracleSQL_Name + "FYTMH,";
                         strOracleSQL_Value = strOracleSQL_Value + "','" + OldRead[strCode].ToString().Trim();
                         lis_Seal.Add(OldRead[strCode].ToString().Trim());
                         strOracleSQL_Name = strOracleSQL_Name + "JFWZDM,";//加封位置代码-------
@@ -883,7 +889,8 @@ namespace SoftType_G
                     strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                     strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";   //资产编号
                     strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
-
+                    strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                    strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                     strOracleSQL_Name = strOracleSQL_Name + "GLFXDM,";   //功率方向代码
                     strValue = Get_GLFXDM(red["intWcLb"].ToString().Trim());
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;

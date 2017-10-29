@@ -225,9 +225,25 @@ namespace TheNewInterface
 
 
                         //ShowWord(watch.ElapsedMilliseconds.ToString(), "上传第"+i.ToString()+"表：");
-                        ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[Convert.ToInt16(temp.Int_ItemsNum)].CHR_UPLOAD_FLAG = "已上传";
                         MeterUp_info.Add(cs_Function.UpdataDNBZZJLInfo(temp.PK_LNG_METER_ID));
-                        MeterUp_UpId.Add(temp.PK_LNG_METER_ID);
+                        foreach (string temp_id in MeterUp_info)
+                        {
+                            if (temp_id.IndexOf("失败") > 0) ErrorMeterNum = ErrorMeterNum + 1;
+                            break;
+                        }
+                        if (ErrorMeterNum > 0)
+                        {
+                            ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[Convert.ToInt16(temp.Int_ItemsNum)].CHR_UPLOAD_FLAG = "未上传";
+                        }
+                        else
+                        {
+                            SetOneMeterUpdateFlag(temp.PK_LNG_METER_ID, cmb_CheckTime.Text.ToString(), 1);
+                            ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[Convert.ToInt16(temp.Int_ItemsNum)].CHR_UPLOAD_FLAG = "已上传";
+                            MeterUp_UpId.Add(temp.PK_LNG_METER_ID);
+                        }
+                       
+                    
+                      
                         foreach (string temp_id in MeterUp_info)
                         {
                             SplitList = TransStr(temp_id);
@@ -238,11 +254,7 @@ namespace TheNewInterface
                             }
 
                         }
-                        foreach (string temp_id in MeterUp_info)
-                        {
-                            if (temp_id.IndexOf("失败") > 0) ErrorMeterNum = ErrorMeterNum + 1;
-                            break;
-                        }
+                       
 
                     }
 
@@ -362,6 +374,66 @@ namespace TheNewInterface
 
             csPublic.ExcuteAccess(SQL, "");
 
+
+        }
+
+        private void SetOneMeterUpdateFlag(string MeterId, string CheckTime, int D_or_U)
+        {
+            try
+            {
+                string ColUpdate = "", ColZCBH = "", ColChecktime = "";
+                switch (csPublicMember.strSoftType)
+                {
+                    case "CL3000G":
+                    case "CL3000F":
+                    case "CL3000DV80":
+                        ColUpdate = "chrSetNetState";
+                        ColZCBH = "intMyId";
+                        ColChecktime = "datJdrq";
+                        break;
+                    case "CL3000S":
+                        ColUpdate = "CHR_UPLOAD_FLAG";
+                        ColZCBH = "PK_LNG_METER_ID";
+                        ColChecktime = "DTM_TEST_DATE";
+                        break;
+                    case "CL3220NW":
+                        ColUpdate = "BOL_UPLOAD_FLAG";
+                        ColZCBH = "INT_MYID";
+                        ColChecktime = "DTE_TESTING_DATE";
+                        break;
+
+                }
+                List<string> SQL = new List<string>();
+                if (csPublicMember.strSoftType == "CL3000S")
+                {
+
+                    SQL.Add(string.Format("update {0} set {1} ='{2}' where {3}='{4}' and {5} =#{6}#", csPublicMember.strTableName, ColUpdate, D_or_U.ToString(), ColZCBH, MeterId, ColChecktime, CheckTime));
+
+                }
+                else if (csPublicMember.strSoftType == "CL3220NW")
+                {
+                    string Flag = D_or_U.ToString() == "0" ? "True" : "False";
+
+                    SQL.Add(string.Format("update {0} set {1} ='{2}' where {3}={4} and {5} =#{6}#", csPublicMember.strTableName, ColUpdate, Flag, ColZCBH, MeterId, ColChecktime, CheckTime));
+
+                }
+                else
+                {
+
+                    SQL.Add(string.Format("update {0} set {1} ='{2}' where {3}={4} and {5} =#{6}#", csPublicMember.strTableName, ColUpdate, D_or_U.ToString(), ColZCBH, MeterId, ColChecktime, CheckTime));
+
+                }
+                OperateData.PublicFunction csPublic = new OperateData.PublicFunction();
+
+                csPublic.ExcuteAccess(SQL, "");
+
+            }
+
+            catch
+            { 
+            
+            }
+          
 
         }
         #endregion
@@ -1071,6 +1143,8 @@ namespace TheNewInterface
         }
         private void cmb_Condition_Loaded(object sender, RoutedEventArgs e)
         {
+            cmb_Condition.Items.Clear();
+            cmb_Condition_2.Items.Clear();
             cmb_Condition.Items.Add("检定时间:");
             cmb_Condition.Items.Add("资产编号:");
             cmb_Condition.SelectedIndex = 0;
@@ -1391,11 +1465,20 @@ namespace TheNewInterface
         #endregion
 
         #region Tab Excel
+        private void IniViewMisControl()
+        { 
+            cmb_misCondition.Items.Add("资产编号");
+            cmb_misCondition.Items.Add("工作单号");
+            cmb_misCondition.SelectedIndex = 0;
+        }
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            #region 查询中间库的数据
-
-            if (txt_MisZcbh.Text.Trim() == "")
+         
+            switch (cmb_misCondition.SelectedIndex)
+            { 
+                case 0:
+                    #region 查询中间库的数据
+                    if (txt_MisZcbh.Text.Trim() == "")
             {
                 MessageBox.Show("请输入资产编号！", "提示", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
@@ -1403,6 +1486,11 @@ namespace TheNewInterface
             showTheTable(txt_MisZcbh.Text.Trim());
 
             #endregion
+                    break;
+                case 1:
+                    break;
+            }
+           
         }
 
         public void showTheTable(string keyWord)

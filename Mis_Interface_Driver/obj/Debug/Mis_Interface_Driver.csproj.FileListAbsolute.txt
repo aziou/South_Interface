@@ -117,3 +117,5 @@ D:\AziouStudio\South_Interface\Mis_Interface_Driver\bin\Debug\Driver_Interface.p
 D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.dll
 D:\AziouStudio\South_Interface\Mis_Interface_Driver\obj\Debug\Mis_Interface_Driver.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\Mis_Interface_Driver.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\Mis_Interface_Driver.pdb

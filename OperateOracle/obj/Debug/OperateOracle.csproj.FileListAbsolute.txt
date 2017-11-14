@@ -249,3 +249,5 @@ D:\AziouStudio\South_Interface\OperateOracle\bin\Debug\DataCore.pdb
 D:\AziouStudio\South_Interface\OperateOracle\obj\Debug\OperateOracle.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\OperateOracle\obj\Debug\OperateOracle.dll
 D:\AziouStudio\South_Interface\OperateOracle\obj\Debug\OperateOracle.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\OperateOracle.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\OperateOracle.pdb

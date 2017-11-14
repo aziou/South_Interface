@@ -69,3 +69,5 @@ D:\AziouStudio\South_Interface\DataCore\bin\Debug\DataCore.dll
 D:\AziouStudio\South_Interface\DataCore\bin\Debug\DataCore.pdb
 D:\AziouStudio\South_Interface\DataCore\obj\Debug\DataCore.dll
 D:\AziouStudio\South_Interface\DataCore\obj\Debug\DataCore.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\DataCore.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\DataCore.pdb

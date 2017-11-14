@@ -1,12 +1,14 @@
 ﻿<Window x:Class="TheNewInterface.UI.InputWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="连续生成铅封" Height="140" Width="300"
+        Title="连续生成铅封" Height="180" Width="300"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <Label Content="请输入起始铅封号:"/>
             <TextBox Name="txt_input" Width="250" Height="25" />
+            <RadioButton Name="rbtn_one" GroupName="SealNum" Width="150" Content="生成一个铅封" HorizontalAlignment="Left"  Margin=" 10,10,0,0"/>
+            <RadioButton Name="rbtn_two" GroupName="SealNum" Width="150" Content="生成两个铅封" HorizontalAlignment="Left"  Margin=" 10,0,0,0"/>
         </StackPanel>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="btn_make" Height="25" Width="80" Content="生成编号" Margin="0,0,10,10" Click="btn_make_Click" />
 

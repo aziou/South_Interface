@@ -552,8 +552,8 @@ namespace SoftType_G
                 strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                 strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";
                 strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
-                strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
-                strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
+                //strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                //strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                 strOracleSQL_Name = strOracleSQL_Name + "SJBZ,";
                 strOracleSQL_Value = strOracleSQL_Value + "','" + DataCore.Global.GB_Base.FirstCheckFlag + "";
                 strOracleSQL_Name = strOracleSQL_Name + "BW,";
@@ -815,15 +815,15 @@ namespace SoftType_G
                         strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                         strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";
                         strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
-                        strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
-                        strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
+                        //strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                        //strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                         strOracleSQL_Name = strOracleSQL_Name + "BGBZ,";
                         strOracleSQL_Value = strOracleSQL_Value + "','10";
 
                         strOracleSQL_Name = strOracleSQL_Name + "FYZCBH,";
                         strOracleSQL_Value = strOracleSQL_Value + "','" + OldRead[strCode].ToString().Trim();
-                        strOracleSQL_Name = strOracleSQL_Name + "FYTMH,";
-                        strOracleSQL_Value = strOracleSQL_Value + "','" + OldRead[strCode].ToString().Trim();
+                        //strOracleSQL_Name = strOracleSQL_Name + "FYTMH,";
+                        //strOracleSQL_Value = strOracleSQL_Value + "','" + OldRead[strCode].ToString().Trim();
                         lis_Seal.Add(OldRead[strCode].ToString().Trim());
                         strOracleSQL_Name = strOracleSQL_Name + "JFWZDM,";//加封位置代码-------
                         strValue = ColSeal[iCirc - 1];//此处修改为读取配置信息里面的加封位置
@@ -889,8 +889,8 @@ namespace SoftType_G
                     strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                     strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";   //资产编号
                     strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
-                    strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
+                    //strOracleSQL_Name = strOracleSQL_Name + "SBTMH,";
+                    //strOracleSQL_Value = strOracleSQL_Value + "','" + MeterZCBH;
                     strOracleSQL_Name = strOracleSQL_Name + "GLFXDM,";   //功率方向代码
                     strValue = Get_GLFXDM(red["intWcLb"].ToString().Trim());
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
@@ -1005,14 +1005,17 @@ namespace SoftType_G
                     strValue = ResultsCode(red["chrWcJl"].ToString().Trim());
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
+                    if (DataCore.Global.GB_Base.SoftType != "CL3000F" && DataCore.Global.GB_Base.SoftType != "CL3000DV80")
+                    {
+                        strOracleSQL_Name = strOracleSQL_Name + "WCCZ,";   //不平衡负载与平衡负载的误差差值
+                        strValue = red["chrWc11"].ToString().Trim();
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
-                    strOracleSQL_Name = strOracleSQL_Name + "WCCZ,";   //不平衡负载与平衡负载的误差差值
-                    strValue = red["chrWc11"].ToString().Trim();
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
-
-                    strOracleSQL_Name = strOracleSQL_Name + "WCCZXYZ,";   //误差差值修约值
-                    strValue = red["chrWc12"].ToString().Trim();
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+                        strOracleSQL_Name = strOracleSQL_Name + "WCCZXYZ,";   //误差差值修约值
+                        strValue = red["chrWc12"].ToString().Trim();
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+                    }
+                    
 
                     strOracleSQL_Name = strOracleSQL_Name + "DQBM";  //地区编码
                     strOracleSQL_Value = strOracleSQL_Value + "','" + str_DQBM+ "'";

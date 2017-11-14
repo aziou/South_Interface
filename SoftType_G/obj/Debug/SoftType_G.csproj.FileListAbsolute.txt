@@ -198,3 +198,5 @@ D:\AziouStudio\South_Interface\SoftType_G\bin\Debug\OperateData.pdb
 D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.dll
 D:\AziouStudio\South_Interface\SoftType_G\obj\Debug\SoftType_G.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_G.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_G.pdb

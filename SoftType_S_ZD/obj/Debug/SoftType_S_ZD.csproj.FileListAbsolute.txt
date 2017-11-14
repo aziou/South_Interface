@@ -30,3 +30,5 @@ D:\AziouStudio\South_Interface\SoftType_S_ZD\bin\Debug\OperateData.pdb
 D:\AziouStudio\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.dll
 D:\AziouStudio\South_Interface\SoftType_S_ZD\obj\Debug\SoftType_S_ZD.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_S_ZD.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_S_ZD.pdb

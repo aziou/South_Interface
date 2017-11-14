@@ -237,3 +237,5 @@ D:\AziouStudio\South_Interface\SoftType_S\bin\Debug\OperateData.pdb
 D:\AziouStudio\South_Interface\SoftType_S\obj\Debug\SoftType_S.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\SoftType_S\obj\Debug\SoftType_S.dll
 D:\AziouStudio\South_Interface\SoftType_S\obj\Debug\SoftType_S.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_S.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_S.pdb

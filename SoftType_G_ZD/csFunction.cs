@@ -683,8 +683,17 @@ namespace SoftType_G_ZD
                 }
                 else
                 {
-                    strValue = "合格";
+                    if (strValue.Trim() == "")
+                    {
+                        strValue = "未检";
+                    }
+                    else
+                    {
+                        strValue = "合格";
+                    }
+
                 }
+
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
 
 
@@ -959,13 +968,16 @@ namespace SoftType_G_ZD
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
 
-                    strOracleSQL_Name = strOracleSQL_Name + "WCCZ,";   //不平衡负载与平衡负载的误差差值
-                    strValue = red["chrWc11"].ToString().Trim();
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+                    if (DataCore.Global.GB_Base.SoftType != "CL3000F" && DataCore.Global.GB_Base.SoftType != "CL3000DV80")
+                    {
+                        strOracleSQL_Name = strOracleSQL_Name + "WCCZ,";   //不平衡负载与平衡负载的误差差值
+                        strValue = red["chrWc11"].ToString().Trim();
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
-                    strOracleSQL_Name = strOracleSQL_Name + "WCCZXYZ,";   //误差差值修约值
-                    strValue = red["chrWc12"].ToString().Trim();
-                    strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+                        strOracleSQL_Name = strOracleSQL_Name + "WCCZXYZ,";   //误差差值修约值
+                        strValue = red["chrWc12"].ToString().Trim();
+                        strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
+                    }
 
                     strOracleSQL_Name = strOracleSQL_Name + "DQBM";  //地区编码
                     strOracleSQL_Value = strOracleSQL_Value + "','" + DataCore.Global.GB_Base.CompanyDQBH + "'";
@@ -984,7 +996,9 @@ namespace SoftType_G_ZD
 
                 //
             }
-            catch (Exception error) { }
+            catch (Exception error) {
+                PublicFunction.WriteLog(error.ToString(), OperateData.FunctionXml.ReadElement("NewUser/CloumMIS/Item", "Name", "txt_Report", "Value", "", System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml") + @"\Log.txt");
+            }
             finally
             {
                 AccessConntion.Close();
@@ -1023,30 +1037,30 @@ namespace SoftType_G_ZD
                     string[] strParm = null;
                     strParm = strValue.Split(csplit);
                     strOracleSQL_Name = strOracleSQL_Name + "CSZ1,";   //误差1
-                    if (strParm.Length > 1)
+                    if (strParm.Length > 0)
                         strOracleSQL_Value = strOracleSQL_Value + "','" + strParm[0];
                     else
                         strOracleSQL_Value = strOracleSQL_Value + "','";
 
                     strOracleSQL_Name = strOracleSQL_Name + "CSZ2,";   //误差2
-                    if (strParm.Length > 2)
+                    if (strParm.Length > 1)
                         strOracleSQL_Value = strOracleSQL_Value + "','" + strParm[1];
                     else
                         strOracleSQL_Value = strOracleSQL_Value + "','";
 
                     strOracleSQL_Name = strOracleSQL_Name + "CSZ3,";   //误差3
-                    if (strParm.Length > 3)
+                    if (strParm.Length > 2)
                         strOracleSQL_Value = strOracleSQL_Value + "','" + strParm[2];
                     else
                         strOracleSQL_Value = strOracleSQL_Value + "','";
                     strOracleSQL_Name = strOracleSQL_Name + "CSZ4,";   //误差4
-                    if (strParm.Length > 4)
+                    if (strParm.Length > 3)
                         strOracleSQL_Value = strOracleSQL_Value + "','" + strParm[3];
                     else
                         strOracleSQL_Value = strOracleSQL_Value + "','";
 
                     strOracleSQL_Name = strOracleSQL_Name + "CSZ5,";   //误差5
-                    if (strParm.Length > 5)
+                    if (strParm.Length > 4)
                         strOracleSQL_Value = strOracleSQL_Value + "','" + strParm[4];
                     else
                         strOracleSQL_Value = strOracleSQL_Value + "','";

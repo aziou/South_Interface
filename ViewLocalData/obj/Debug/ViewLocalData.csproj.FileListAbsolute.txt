@@ -77,3 +77,5 @@ D:\AziouStudio\South_Interface\ViewLocalData\bin\Debug\OperateData.pdb
 D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.dll
 D:\AziouStudio\South_Interface\ViewLocalData\obj\Debug\ViewLocalData.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\ViewLocalData.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\ViewLocalData.pdb

@@ -177,3 +177,5 @@ D:\AziouStudio\South_Interface\Clou_Report\bin\Debug\OperateData.pdb
 D:\AziouStudio\South_Interface\Clou_Report\obj\Debug\Clou_Report.csprojResolveAssemblyReference.cache
 D:\AziouStudio\South_Interface\Clou_Report\obj\Debug\Clou_Report.dll
 D:\AziouStudio\South_Interface\Clou_Report\obj\Debug\Clou_Report.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\Clou_Report.dll
+D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\Clou_Report.pdb

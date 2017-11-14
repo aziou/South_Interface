@@ -44,6 +44,7 @@ namespace TheNewInterface
             
         }
         public string TableName = "VT_SB_JKDNBJDJL";
+        public string SelectTime = "";
         Thread UpdateThread;
         public readonly string BaseConfigPath = System.AppDomain.CurrentDomain.BaseDirectory + @"\config\NewBaseInfo.xml";
         #region Tab 001
@@ -81,7 +82,7 @@ namespace TheNewInterface
                     btn_update.IsEnabled = true;
                     return;
                 }
-
+                SelectTime = cmb_CheckTime.Text.ToString();
                 OperateData.FunctionXml.UpdateElement("NewUser/CloumMIS/Item", "Name", "CheckTimeFlag", "Value", cmb_CheckTime.Text, BaseConfigPath);
                 //OperateData.FunctionXml.UpdateElement("NewUser/CloumMIS/Item", "Name", "TheWorkNum", "Value", "07522300987", BaseConfigPath);
 
@@ -226,22 +227,27 @@ namespace TheNewInterface
 
                         //ShowWord(watch.ElapsedMilliseconds.ToString(), "上传第"+i.ToString()+"表：");
                         MeterUp_info.Add(cs_Function.UpdataDNBZZJLInfo(temp.PK_LNG_METER_ID));
+                        bool bol_success = true;
                         foreach (string temp_id in MeterUp_info)
                         {
-                            if (temp_id.IndexOf("失败") > 0) ErrorMeterNum = ErrorMeterNum + 1;
+                            if (temp_id.IndexOf("失败") > 0)
+                            {
+                                ErrorMeterNum = ErrorMeterNum + 1;
+                                bol_success = false;
+                            } 
                             break;
                         }
-                        if (ErrorMeterNum > 0)
+                        if (!bol_success)
                         {
                             ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[Convert.ToInt16(temp.Int_ItemsNum)].CHR_UPLOAD_FLAG = "未上传";
                         }
                         else
                         {
-                            SetOneMeterUpdateFlag(temp.PK_LNG_METER_ID, cmb_CheckTime.Text.ToString(), 1);
+                            SetOneMeterUpdateFlag(temp.PK_LNG_METER_ID, SelectTime, 1);
                             ViewModel.AllMeterInfo.CreateInstance().MeterBaseInfo[Convert.ToInt16(temp.Int_ItemsNum)].CHR_UPLOAD_FLAG = "已上传";
                             MeterUp_UpId.Add(temp.PK_LNG_METER_ID);
                         }
-                       
+                        bol_success = true;
                     
                       
                         foreach (string temp_id in MeterUp_info)
@@ -2822,6 +2828,7 @@ namespace TheNewInterface
           
             // bool Result = true;
             bool Result = ViewLocalData.ViewData.ExceuteSql(Sql);
+            
             MessageBox.Show((Result == true ? "修改成功！" + Sql : "修改失败！" + Sql));
         }
 

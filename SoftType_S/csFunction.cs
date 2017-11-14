@@ -1191,8 +1191,9 @@ namespace SoftType_S
             string strOracleSQL_Name = "";
             string strOracleSQL_Value = "";
             string strOracleSQL = "insert into VT_SB_JKDNBJDWC (";
-
-            string Error_avr = "", Error_limit = "", Runtime="";
+            string ProjectID = "",Id_GLFX="",Id_FZDL="",Id_GLYS="";
+            string Error_avr = "", Error_limit = "", Runtime="",ErrorCollection="";
+            List<string> ErrorCollist = new List<string>();
             string ErrorResult = "Y";
             #region 去除重复信息
             List<string> proCol = new List<string>();
@@ -1220,36 +1221,83 @@ namespace SoftType_S
                 watch.Start();
 
 
-
+                ErrorCollist.Clear();
                 while (red.Read() == true)
                 {
                     strOracleSQL = "insert into VT_SB_JKDNBJDWC (";
                     strOracleSQL_Value = "";
                     strOracleSQL_Name = "";
-
+                    ErrorCollection = "";
                     if (!OutRunSampleInfo(ref proCol, red["AVR_PROJECT_NO"].ToString().Trim()))
                     {
                         continue;
                     }
-
-
+                    ProjectID = red["AVR_PROJECT_NO"].ToString().Trim();
+                   
+                    Id_GLFX = ProjectID.Substring(1,1);
+                    switch (Id_GLFX)
+                    {
+                        case "1"://正向有功
+                            Id_GLFX = "1";
+                            break;
+                        case "2"://反向有功
+                            Id_GLFX = "3";
+                            break;
+                        case "3"://正向无功
+                            Id_GLFX = "2";
+                            break;
+                        case "4"://反向无功
+                            Id_GLFX = "4";
+                            break;
+                    }
+                    Id_FZDL = ProjectID.Substring(3,2);
+                    switch (Id_FZDL)
+                    {
+                        case "01"://
+                            Id_FZDL = "1.0";
+                            break;
+                        case "02"://
+                            Id_FZDL = "0.5L";
+                            break;
+                        case "03"://
+                            Id_FZDL = "0.8C";
+                            break;
+                        case "04"://
+                            Id_FZDL = "0.5C";
+                            break;
+                        case "05"://
+                            Id_FZDL = "0.8L";
+                            break;
+                        case "06"://
+                            Id_FZDL = "0.25L";
+                            break;
+                        case "07"://
+                            Id_FZDL = "0.25C";
+                            break;
+                        
+                    }
+                    //Id_GLYS = ProjectID.Substring(5,2);
                     strOracleSQL_Name = strOracleSQL_Name + "GZDBH,";   //工作单编号
                     strOracleSQL_Value = strOracleSQL_Value + "'" + DataCore.Global.GB_Base.MeterGZDBH;
                     strOracleSQL_Name = strOracleSQL_Name + "ZCBH,";   //资产编号
                     strOracleSQL_Value = strOracleSQL_Value + "','" + DataCore.Global.GB_Base.MeterZcbh;
 
                     strOracleSQL_Name = strOracleSQL_Name + "GLFXDM,";   //功率方向代码
-                    strValue = Get_GLFXDM(red["CHR_POWER_TYPE"].ToString().Trim());
+                    strValue = Id_GLFX;
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                     strOracleSQL_Name = strOracleSQL_Name + "GLYSDM,";   //功率因数代码
-                    strValue = Get_GLYSDM(red["AVR_POWER_FACTOR"].ToString().Trim());
+                    strValue = Get_GLYSDM(Id_FZDL.ToString().Trim());
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
                     strOracleSQL_Name = strOracleSQL_Name + "FZDLDM,";   //负载电流代码
                     strValue = Get_FZDLDM(red["AVR_IB_MULTIPLE"].ToString().Trim());
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
                     strOracleSQL_Name = strOracleSQL_Name + "XBDM,";   //相别代码 三相、单相
                     strValue = Get_XBDM(DataCore.Global.GB_Base.MeterXBDM);
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
                     strOracleSQL_Name = strOracleSQL_Name + "FZLXDM,";   //负载类型代码 平衡负载、不平衡负载-1、2、3、4
@@ -1257,11 +1305,15 @@ namespace SoftType_S
                     //strValue = "01";
                     //if (csPublicMember.strFZLXDM == "01" || csPublicMember.strFZLXDM == "1") 
                     //    strValue = "02";
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
                     strOracleSQL_Name = strOracleSQL_Name + "FYDM,";   //分元代码 01、02、03、04
                     strValue = red["CHR_COMPONENT"].ToString().Trim();
+                    ErrorCollection = ErrorCollection + strValue;
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue.PadLeft(2, '0');
+
+                    ErrorCollist.Add(ErrorCollection);
 
                     strValue = red["AVR_ERROR_MORE"].ToString().Trim();
                     char[] csplit = { '|' };
@@ -1509,8 +1561,12 @@ namespace SoftType_S
             {
                 AccessConntion.Close();
             }
-
-
+            int count = 0;
+            foreach(string temp in ErrorCollist)
+            {
+            OutRunSampleInfo(ref ErrorCollist, temp,count);
+            count++;
+            }
             return listSQL;
         }
         /// <summary>
@@ -2096,6 +2152,37 @@ namespace SoftType_S
                     return true;
                 }
             }
+
+        }
+
+        private static bool OutRunSampleInfo(ref List<string> projectCol, string NowProjectId,int number)
+        {
+            bool Results = true;
+            if (projectCol.Count < 1)
+            {
+                projectCol.Add(NowProjectId);
+                return true;
+            }
+            else
+            {
+                for (int i = 0; i < projectCol.Count; i++)
+                {
+                    if (i == number) continue;
+                    if (i >= 62) break;
+                    if (projectCol[i] == NowProjectId)
+                    {  
+                        Results= false;
+                    }
+                    else
+                    {
+                        projectCol.Add(NowProjectId);
+                        Results= true;
+                    }
+                
+                }
+                   
+            }
+            return  Results;
 
         }
         /// <summary>

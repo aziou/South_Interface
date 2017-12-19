@@ -1,0 +1,53 @@
+﻿<Window x:Class="TheNewInterface.SetMeterSS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="手动录入表底度" Height="250" Width="546"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label  Height="25" Width="100"  VerticalContentAlignment="Center" Visibility="Hidden"/>
+                <Label  Width="80" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="总底码" Margin="0,0,3,0"/>
+                <Label Width="80" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="尖底码" Margin="0,0,3,0"/>
+                <Label  Width="80" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="峰底码" Margin="0,0,3,0" />
+                <Label  Width="80" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="平底码" Margin="0,0,3,0"/>
+                <Label  Width="80" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="谷底码" Margin="0,0,3,0"/>
+            </WrapPanel>
+            <WrapPanel Margin="5,0,0,15">
+                <CheckBox Name="chk_ZXYG" Content="正向有功:" Height="25" Width="100"  VerticalContentAlignment="Center"/>
+                <TextBox Name="txt_zxygz" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxygj" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxygf" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0" />
+                <TextBox Name="txt_zxygp" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxygGu" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+            </WrapPanel>
+            <WrapPanel Margin="5,0,0,15">
+                <CheckBox Name="chk_FXYG" Content="反向有功:" Height="25" Width="100"  VerticalContentAlignment="Center"/>
+                <TextBox Name="txt_fxygZ" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxygj" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxygf" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0" />
+                <TextBox Name="txt_fxygp" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxygGu" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+            </WrapPanel>
+            <WrapPanel Margin="5,0,0,15">
+                <CheckBox Name="chk_ZXWG" Content="正向无功:" Height="25" Width="100"  VerticalContentAlignment="Center"/>
+                <TextBox Name="txt_zxwgZ" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxwgJ" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxwgF" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0" />
+                <TextBox Name="txt_zxwgP" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_zxwgGu" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+            </WrapPanel>
+            <WrapPanel Margin="5,0,0,15">
+                <CheckBox Name="chk_FXWG" Content="反向无功:" Height="25" Width="100"  VerticalContentAlignment="Center"/>
+                <TextBox Name="txt_fxwgz" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxwgj" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxwgf" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0" />
+                <TextBox Name="txt_fxwgp" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+                <TextBox Name="txt_fxwgGu" Width="80" Height="25" VerticalContentAlignment="Center" Text="0.00" Margin="0,0,3,0"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right">
+                <Button Name="btn_input" Width="80" Height="25" Content="录入数据" Click="btn_input_Click"  Margin="0,0,15,10"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -846,7 +846,7 @@ namespace SoftType_G_ZD
         {
 
             List<string> list_SQL = new List<string>();
-            string strSQL = "SELECT * FROM METERERROR WHERE  intMyId=" + str_PkID + "";
+            string strSQL = "SELECT * FROM METERERROR WHERE  intMyId=" + str_PkID + " and intWcType=1";
             string strValue = "";
             string strOracleSQL_Name = "";
             string strOracleSQL_Value = "";
@@ -897,19 +897,38 @@ namespace SoftType_G_ZD
                         strOracleSQL = "insert into VT_SB_JKDNBJDWC (";
                         continue;
                     }
-
-                    if (Convert.ToDouble(red["dblxIb"].ToString().Trim()) > 1)
+                    #region FZDLDM
+                    if (Convert.ToDouble(red["dblxIb"].ToString().Trim()) >= 1)
                     {
-                        if (((int)(Convert.ToDouble(strMinIb) * Convert.ToDouble(red["dblxIb"].ToString().Trim()) + 0.5)).ToString() == strMaxIb)
+                        int PrjId = Convert.ToInt16(red["chrProjectNo"].ToString().Trim().Substring(1, 3)) / 5;
+                        switch (PrjId)
                         {
-                            strValue = Get_FZDLDM("IMAX");
-                        }
-                        else
-                        {
-                            strValue = Get_FZDLDM("0.5IMAX");
+                            case 33:
+                            case 20:
+                            case 46:
+                            case 59:
+                            case 80:
+                                strValue = Get_FZDLDM("IMAX");
+                                break;
+                            case 21:
+                            case 34:
+                            case 47:
+                            case 60:
+                            case 81:
+                                strValue = Get_FZDLDM("0.5IMAX");
+                                break;
+                            case 26:
+                            case 39:
+                            case 52:
+                            case 65:
+                            case 86:
+                                strValue = Get_FZDLDM("1.0IB");
+                                break;
 
                         }
                     }
+                    #endregion
+
                     strOracleSQL_Value = strOracleSQL_Value + "','" + strValue;
 
                     strOracleSQL_Name = strOracleSQL_Name + "XBDM,";   //相别代码 三相、单相

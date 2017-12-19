@@ -3333,6 +3333,12 @@ namespace TheNewInterface
             inputwindow.ShowDialog();
         }
 
+        private void btn_AddMeterSS_Click(object sender, RoutedEventArgs e)
+        {
+            SetMeterSS setmeterss = new SetMeterSS();
+            setmeterss.ShowDialog();
+        }
+
 
     
 

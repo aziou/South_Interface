@@ -38,7 +38,7 @@
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="6*"/>
                         <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5.5*" />
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="0.5*"/>
                     </Grid.ColumnDefinitions>
@@ -82,7 +82,8 @@
                             <Button Width="80" Height="30" VerticalContentAlignment="Center" Margin="0,0,5,0" Content="基本信息配置" Name="Btn_Config" Click="Btn_Config_Click"/>
                             <Button Name="btn_MisConfig" Content="中间库配置" Width="80" Height="30" Click="btn_MisConfig_Click" Margin="0,0,5,0" />
                             <Button Name="btn_download" Width="80" Height="30" Content="下载数据" Click="btn_download_Click" Visibility="Visible" Margin="0,0,5,0"  />
-                            <Button Name="btn_ExcelSeal" Width="80" Height="30" Content="导出工作单" Click="btn_ExcelSeal_Click" />
+                            <Button Name="btn_ExcelSeal" Width="80" Height="30" Content="导出工作单" Click="btn_ExcelSeal_Click" Margin="0,0,5,0"  />
+                            <Button Name="btn_AddMeterSS" Width="80" Height="30" Content="录入底度" Click="btn_AddMeterSS_Click"/>
                         </WrapPanel>
                         <WrapPanel Margin="0,5,0,5">
                             <Button Name="btn_deldteMis" Width="80" Height="30" Content="删除中间库" Click="btn_deldteMis_Click" Margin="0,0,5,0"  />

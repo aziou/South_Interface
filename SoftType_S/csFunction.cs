@@ -767,9 +767,28 @@ namespace SoftType_S
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
 
                 strOracleSQL_Name = strOracleSQL_Name + "ZDXLWCSYJLDM,";  //最大需量误差试验结论代码
+                str_xlzqwc = "";
                 strValue = Get_METER_COMMUNICATION("015");
-                if (strValue == "") strValue = Get_METER_COMMUNICATION("014");
-                if (strValue == "") strValue = Get_METER_COMMUNICATION("016");
+                str_xlzqwc = strValue + ",";
+                strValue = Get_METER_COMMUNICATION("014");
+                str_xlzqwc = str_xlzqwc + strValue + ",";
+                strValue = Get_METER_COMMUNICATION("016");
+                str_xlzqwc = str_xlzqwc + strValue + ",";
+                if (str_xlzqwc.Contains("合格"))
+                {
+                    strValue = "合格";
+                }
+                else if (str_xlzqwc.Contains("不合格"))
+                {
+                    strValue = "不合格";
+                }
+                else
+                {
+                    strValue = "未检定";
+                }
+                //strValue = Get_METER_COMMUNICATION("015");
+                //if (strValue == "") strValue = Get_METER_COMMUNICATION("014");
+                //if (strValue == "") strValue = Get_METER_COMMUNICATION("016");
 
                 strOracleSQL_Value = strOracleSQL_Value + "','" + ResultsCode(strValue);
                 strOracleSQL_Name = strOracleSQL_Name + "ZDXLGNJCJLDM,";    //最大需量功能检查结论代码

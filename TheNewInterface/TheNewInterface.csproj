@@ -73,6 +73,9 @@
     <Compile Include="OracleConfig.xaml.cs">
       <DependentUpon>OracleConfig.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SetMeterSS.xaml.cs">
+      <DependentUpon>SetMeterSS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OracleConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetMeterSS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

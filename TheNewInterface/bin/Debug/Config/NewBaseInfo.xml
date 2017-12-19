@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="gb2312" standalone="yes"?>
 <NewUser>
   <CloumMIS>
-    <Item Name="txt_DataPath" Value="D:\A_temp\CLOU_云南各地供电局软件\DataBase\DataBase\ClouMeterData.mdb" />
+    <Item Name="txt_DataPath" Value="D:\A_temp\CLOU_广东各地供电局软件\南网软件CL3000S\CL3000S-H-NW-标准版\CL3000S-H-NW\Resource\Client\DataBase\ClouMeterData.mdb" />
     <Item Name="txt_equipment" Value="03378" />
     <Item Name="txt_Jyy" Value="123123阿百川" />
     <Item Name="txt_Hyy" Value="38A64E479C828B89220BC3F84D289E6B" />
@@ -12,7 +12,7 @@
     <Item Name="cmb_Seal03" Value="右耳封" />
     <Item Name="cmb_Seal02" Value="编程小门" />
     <Item Name="cmb_Seal01" Value="左耳封" />
-    <Item Name="AccessLink" Value="Provider=Microsoft.ACE.OleDb.12.0;Data Source=D:\A_temp\CLOU_云南各地供电局软件\DataBase\DataBase\ClouMeterData.mdb;Persist Security Info=False" />
+    <Item Name="AccessLink" Value="Provider=Microsoft.ACE.OleDb.12.0;Data Source=D:\A_temp\CLOU_广东各地供电局软件\南网软件CL3000S\CL3000S-H-NW-标准版\CL3000S-H-NW\Resource\Client\DataBase\ClouMeterData.mdb;Persist Security Info=False" />
     <Item Name="TheWorkNum" Value="123123" />
     <Item Name="" Value="" />
     <Item Name="OracleLink" Value="Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.150.26.131)(PORT=1530)))(CONNECT_DATA=(SERVICE_NAME= yxscdb)));User Id=PMS_JL; Password=PMS_JL#123;Connection Timeout=10" />
@@ -23,16 +23,16 @@
     <Item Name="txt_PASSWORD" Value="PMS_JL#123" />
     <Item Name="txt_CompanyNum" Value="032000" />
     <Item Name="WorkNumLoad" Value="select GZDBH from {0} where wcbz='0' and rymc ='龙玉群' and DQBM='032000'order by GZDBH desc " />
-    <Item Name="txt_Report" Value="C:\Users\screw\Desktop" />
+    <Item Name="txt_Report" Value="C:\Users\screw\Desktop\123123123" />
     <Item Name="CompanyNum" Value="" />
     <Item Name="txt_MeterNum" Value="1" />
     <Item Name="Cmb_Facory" Value="科陆电子" />
-    <Item Name="CheckTimeFlag" Value="2017/11/6 12:54:56" />
+    <Item Name="CheckTimeFlag" Value="2017/12/13 10:51:58" />
     <Item Name="txt_SqlServerName" Value="" />
     <Item Name="IsFakeData" Value="false" />
     <Item Name="rbtn_disOkFalse" Value="False" />
     <Item Name="rbtn_disOkTrue" Value="True" />
-    <Item Name="AccessSchemeLink" Value="Provider=Microsoft.ACE.OleDb.12.0;Data Source=D:\A_temp\CLOU_云南各地供电局软件\DataBase\DataBase\ClouMeterData.mdb;Persist Security Info=False" />
+    <Item Name="AccessSchemeLink" Value="Provider=Microsoft.ACE.OleDb.12.0;Data Source=D:\A_temp\CLOU_广东各地供电局软件\南网软件CL3000S\CL3000S-H-NW-标准版\CL3000S-H-NW\Resource\Client\DataBase\ClouMeterData.mdb;Persist Security Info=False" />
   </CloumMIS>
   <User>
     <Item UserName="张念" UserNumber="9161AE3FDE5F20D2E0437F00000120D2" />

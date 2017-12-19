@@ -699,3 +699,5 @@ D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\TheNewInterface.csp
 D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\UI\InputWindow.baml
 D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\UI\InputWindow.g.cs
 D:\AziouStudio\South_Interface\TheNewInterface\bin\Debug\SoftType_3220.pdb
+D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\SetMeterSS.baml
+D:\AziouStudio\South_Interface\TheNewInterface\obj\x86\Debug\SetMeterSS.g.cs

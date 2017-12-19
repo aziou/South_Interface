@@ -878,7 +878,7 @@ namespace SoftType_3220
                 for (int iCirc = 1; iCirc < 2; iCirc++)
                 {
                     if (OldRead["STR_TEST_CONCLUSION"].ToString().Trim() == "不合格") continue;
-                    string strCode = "STR_SEAL00" + iCirc.ToString().Trim();
+                    string strCode = "STR_SEAL_" + iCirc.ToString().Trim();
                     strOracleSQL_Name = "";
                     strOracleSQL_Value = "";
                     if (OldRead[strCode].ToString().Trim() != "")
